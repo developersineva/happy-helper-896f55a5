@@ -49,7 +49,7 @@ const StatItem = ({ value, suffix, label, delay }: StatItemProps) => {
 };
 
 const stats = [
-  { value: 25, suffix: "+", label: "Years Experience" },
+  { value: 10, suffix: "+", label: "Years Experience" },
   { value: 500, suffix: "+", label: "Projects Completed" },
   { value: 100, suffix: "%", label: "Client Satisfaction" },
   { value: 15, suffix: "+", label: "Industry Awards" },
