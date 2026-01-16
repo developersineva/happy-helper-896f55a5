@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import futureLandLogo from "@/assets/Future_Land_Logo.png";
 import {
   Facebook,
   Instagram,
@@ -121,24 +122,12 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center">
-                <svg
-                  viewBox="0 0 24 24"
-                  className="w-6 h-6 text-secondary-foreground"
-                  fill="currentColor"
-                >
-                  <path d="M12 2L8 6H4v4l-4 4 4 4v4h4l4 4 4-4h4v-4l4-4-4-4V6h-4L12 2zm0 3.5L14.5 8H16v1.5L18.5 12 16 14.5V16h-1.5L12 18.5 9.5 16H8v-1.5L5.5 12 8 9.5V8h1.5L12 5.5z" />
-                </svg>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-display text-lg font-bold tracking-[0.2em] uppercase">
-                  FUTURE LAND
-                </span>
-                <span className="text-xs tracking-[0.15em] uppercase text-secondary">
-                  CAPITAL
-                </span>
-              </div>
+            <div className="mb-6">
+              <img 
+                src={futureLandLogo} 
+                alt="Future Land Capital" 
+                className="h-16 w-auto brightness-0 invert"
+              />
             </div>
             <p className="text-primary-foreground/80 text-sm leading-relaxed mb-6">
               Building tomorrow's legacy today. Texas' premier sustainable luxury construction company, creating exceptional spaces for discerning clients.
