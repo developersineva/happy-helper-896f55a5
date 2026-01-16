@@ -13,6 +13,7 @@ import {
   CheckCircle,
   Building,
   Clock,
+  Linkedin,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -247,49 +248,86 @@ const About = () => {
         </div>
       </section>
 
-      {/* Leadership Section */}
-      <section className="py-24 bg-[#F5F3EF]">
+      {/* Leadership Section - Modern Split Layout */}
+      <section className="py-24 bg-[#F5F5F0]">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <span className="text-[#A67C52] font-medium tracking-[0.2em] uppercase text-sm mb-4 block">Leadership</span>
-            <h2 className="font-display text-4xl text-[#333333] mb-4">Meet Our Founder</h2>
-            <p className="text-[#333333]/70 max-w-2xl mx-auto">
-              Visionary leadership driving Berdez S.A.S. with over a decade of executive experience in Colombia's construction industry.
-            </p>
-            <div className="w-16 h-1 bg-[#A67C52] mx-auto mt-4" />
-          </div>
-          <div className="flex justify-center">
-            {team.map((member, i) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white rounded-lg overflow-hidden shadow-lg max-w-lg"
+          <div className="grid lg:grid-cols-2 gap-0 items-stretch max-w-6xl mx-auto overflow-hidden rounded-lg shadow-xl">
+            {/* LEFT SIDE - Image */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative h-[500px] lg:h-auto min-h-[600px]"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800"
+                alt="Sofía Alejandra Bermúdez Llanos"
+                className="w-full h-full object-cover"
+              />
+              {/* Gradient overlay on right edge */}
+              <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white/20 to-transparent hidden lg:block" />
+              {/* Subtle shadow overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            </motion.div>
+
+            {/* RIGHT SIDE - Content */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-white p-8 lg:p-12 flex flex-col justify-center"
+            >
+              {/* Section Label */}
+              <span className="text-[#A67C52] font-medium tracking-[0.2em] uppercase text-sm mb-4 block">
+                Leadership
+              </span>
+
+              {/* Heading */}
+              <h2 className="font-display text-3xl lg:text-4xl text-[#333333] mb-6">
+                Meet Our Founder
+              </h2>
+              <div className="w-16 h-1 bg-[#A67C52] mb-8" />
+
+              {/* Name & Title */}
+              <h3 className="font-display text-2xl text-[#333333] mb-2">
+                Sofía Alejandra Bermúdez Llanos
+              </h3>
+              <p className="text-[#A67C52] font-semibold text-lg mb-6">
+                Founder & Manager
+              </p>
+
+              {/* Bio */}
+              <p className="text-[#333333]/80 leading-relaxed mb-8">
+                Sofía Alejandra Bermúdez Llanos is a goal-oriented executive with over 10 years of experience in the construction industry. As the Manager of Berdez S.A.S. in Bogotá, Colombia, she specializes in leading high-performance teams to deliver exceptional construction projects. A graduate of The Australian National University, Sofía combines international education with local expertise to drive organizational success in Colombia's competitive construction market.
+              </p>
+
+              {/* Education & Location with Icons */}
+              <div className="space-y-3 mb-8">
+                <div className="flex items-center gap-3">
+                  <Award className="w-5 h-5 text-[#A67C52] flex-shrink-0" />
+                  <span className="text-[#333333]/70">
+                    <span className="font-medium text-[#333333]">Education:</span> The Australian National University
+                  </span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Building className="w-5 h-5 text-[#A67C52] flex-shrink-0" />
+                  <span className="text-[#333333]/70">
+                    <span className="font-medium text-[#333333]">Location:</span> Bogotá, Distrito Capital, Colombia
+                  </span>
+                </div>
+              </div>
+
+              {/* LinkedIn Button */}
+              <a
+                href="https://co.linkedin.com/in/sofia-bermudez-6923311b"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-[#2D5A3D] hover:text-[#A67C52] transition-colors font-medium w-fit"
               >
-                <div className="h-80 overflow-hidden">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                  />
-                </div>
-                <div className="p-8 text-center">
-                  <h3 className="font-display text-2xl text-[#333333]">{member.name}</h3>
-                  <p className="text-[#A67C52] font-medium mb-4 text-lg">{member.role}</p>
-                  <p className="text-[#333333]/70 text-sm leading-relaxed mb-4">{member.bio}</p>
-                  <div className="pt-4 border-t border-gray-100 text-left">
-                    <p className="text-sm text-[#333333]/60 mb-1">
-                      <span className="font-medium text-[#333333]">Education:</span> The Australian National University
-                    </p>
-                    <p className="text-sm text-[#333333]/60">
-                      <span className="font-medium text-[#333333]">Location:</span> Bogotá, Distrito Capital, Colombia
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                <Linkedin className="w-5 h-5" />
+                Connect on LinkedIn
+              </a>
+            </motion.div>
           </div>
         </div>
       </section>
