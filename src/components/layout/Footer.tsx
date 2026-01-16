@@ -5,7 +5,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import futureLandLogo from "@/assets/Future_Land_Logo.png";
-import { Facebook, Instagram, Linkedin, Twitter, MapPin, Phone, Mail, ArrowRight } from "lucide-react";
+import { Facebook, Instagram, Linkedin, MapPin, Phone, Mail, ArrowRight } from "lucide-react";
 const quickLinks = [{
   name: "About Us",
   path: "/about"
@@ -21,21 +21,17 @@ const quickLinks = [{
 }];
 
 const socialLinks = [{
-  icon: Facebook,
-  href: "#",
-  label: "Facebook"
-}, {
   icon: Instagram,
-  href: "#",
+  href: "https://www.instagram.com/future.land.capital",
   label: "Instagram"
 }, {
-  icon: Linkedin,
-  href: "#",
-  label: "LinkedIn"
+  icon: Facebook,
+  href: "https://www.facebook.com/share/14NfnyjRFpe/?mibextid=wwXIfr",
+  label: "Facebook"
 }, {
-  icon: Twitter,
-  href: "#",
-  label: "Twitter"
+  icon: Linkedin,
+  href: "https://www.linkedin.com/company/111486242",
+  label: "LinkedIn"
 }];
 export const Footer = () => {
   const [email, setEmail] = useState("");
@@ -112,7 +108,7 @@ export const Footer = () => {
               exceptional spaces for discerning clients.
             </p>
             <div className="flex gap-4">
-              {socialLinks.map(social => <a key={social.label} href={social.href} aria-label={social.label} className="w-10 h-10 rounded-full bg-charcoal/10 flex items-center justify-center text-charcoal transition-colors hover:bg-secondary hover:text-white">
+              {socialLinks.map(social => <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} className="w-10 h-10 rounded-full bg-charcoal/10 flex items-center justify-center text-charcoal transition-colors hover:bg-secondary hover:text-white">
                   <social.icon size={18} />
                 </a>)}
             </div>
