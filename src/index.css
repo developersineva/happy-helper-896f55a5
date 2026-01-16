@@ -16,6 +16,7 @@
     /* Brand Colors - HSL format */
     --background: 40 23% 95%;
     --foreground: 0 0% 20%;
+    --ink: 0 0% 0%;
 
     --card: 0 0% 100%;
     --card-foreground: 0 0% 20%;
@@ -68,6 +69,7 @@
   .dark {
     --background: 0 0% 10%;
     --foreground: 40 23% 95%;
+    --ink: 40 23% 95%;
 
     --card: 0 0% 12%;
     --card-foreground: 40 23% 95%;

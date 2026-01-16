@@ -76,7 +76,7 @@ export const Hero = () => {
               asChild
               size="lg"
               variant="outline"
-              className="border-card text-card hover:bg-card hover:text-foreground text-base px-8"
+              className="border-card bg-card/95 text-ink hover:bg-card hover:text-ink text-base px-8"
             >
               <Link to="/contact">Schedule Consultation</Link>
             </Button>
