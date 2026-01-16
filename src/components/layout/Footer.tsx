@@ -6,49 +6,61 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import futureLandLogo from "@/assets/Future_Land_Logo.png";
 import { Facebook, Instagram, Linkedin, Twitter, MapPin, Phone, Mail, ArrowRight } from "lucide-react";
-
-const quickLinks = [
-  { name: "About Us", path: "/about" },
-  { name: "Services", path: "/services" },
-  { name: "Projects", path: "/projects" },
-  { name: "Sustainability", path: "/sustainability" },
-  { name: "Contact", path: "/contact" },
-];
-
-const services = [
-  "Custom Luxury Homes",
-  "Commercial Development",
-  "Green Building",
-  "Land Development",
-  "Renovation",
-  "Project Management",
-];
-
-const socialLinks = [
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-];
-
+const quickLinks = [{
+  name: "About Us",
+  path: "/about"
+}, {
+  name: "Services",
+  path: "/services"
+}, {
+  name: "Projects",
+  path: "/projects"
+}, {
+  name: "Sustainability",
+  path: "/sustainability"
+}, {
+  name: "Contact",
+  path: "/contact"
+}];
+const services = ["Custom Luxury Homes", "Commercial Development", "Green Building", "Land Development", "Renovation", "Project Management"];
+const socialLinks = [{
+  icon: Facebook,
+  href: "#",
+  label: "Facebook"
+}, {
+  icon: Instagram,
+  href: "#",
+  label: "Instagram"
+}, {
+  icon: Linkedin,
+  href: "#",
+  label: "LinkedIn"
+}, {
+  icon: Twitter,
+  href: "#",
+  label: "Twitter"
+}];
 export const Footer = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast();
-
+  const {
+    toast
+  } = useToast();
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-
     setIsLoading(true);
     try {
-      const { error } = await supabase.from("newsletter_subscriptions").insert({ email: email.trim() });
-
+      const {
+        error
+      } = await supabase.from("newsletter_subscriptions").insert({
+        email: email.trim()
+      });
       if (error) {
         if (error.code === "23505") {
           toast({
             title: "Already subscribed",
-            description: "This email is already subscribed to our newsletter.",
+            description: "This email is already subscribed to our newsletter."
           });
         } else {
           throw error;
@@ -56,7 +68,7 @@ export const Footer = () => {
       } else {
         toast({
           title: "Successfully subscribed!",
-          description: "Thank you for subscribing to our newsletter.",
+          description: "Thank you for subscribing to our newsletter."
         });
         setEmail("");
       }
@@ -64,15 +76,13 @@ export const Footer = () => {
       toast({
         title: "Error",
         description: "Failed to subscribe. Please try again.",
-        variant: "destructive",
+        variant: "destructive"
       });
     } finally {
       setIsLoading(false);
     }
   };
-
-  return (
-    <footer className="bg-[#F5F3EF] text-charcoal">
+  return <footer className="bg-[#F5F3EF] text-charcoal">
       {/* Newsletter Section */}
       <div className="border-b border-charcoal/20">
         <div className="container mx-auto px-4 py-12">
@@ -82,19 +92,8 @@ export const Footer = () => {
               Subscribe to our newsletter for the latest projects, industry insights, and exclusive offers.
             </p>
             <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="bg-white border-charcoal/30 text-charcoal placeholder:text-charcoal/50 flex-1"
-                required
-              />
-              <Button
-                type="submit"
-                disabled={isLoading}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground"
-              >
+              <Input type="email" placeholder="Enter your email" value={email} onChange={e => setEmail(e.target.value)} className="bg-white border-charcoal/30 text-charcoal placeholder:text-charcoal/50 flex-1" required />
+              <Button type="submit" disabled={isLoading} className="bg-primary hover:bg-primary/90 text-primary-foreground">
                 Subscribe
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -116,16 +115,9 @@ export const Footer = () => {
               exceptional spaces for discerning clients.
             </p>
             <div className="flex gap-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="w-10 h-10 rounded-full bg-charcoal/10 flex items-center justify-center text-charcoal transition-colors hover:bg-secondary hover:text-white"
-                >
+              {socialLinks.map(social => <a key={social.label} href={social.href} aria-label={social.label} className="w-10 h-10 rounded-full bg-charcoal/10 flex items-center justify-center text-charcoal transition-colors hover:bg-secondary hover:text-white">
                   <social.icon size={18} />
-                </a>
-              ))}
+                </a>)}
             </div>
           </div>
 
@@ -133,13 +125,11 @@ export const Footer = () => {
           <div>
             <h4 className="font-display text-xl mb-6 text-charcoal">Quick Links</h4>
             <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.path}>
+              {quickLinks.map(link => <li key={link.path}>
                   <Link to={link.path} className="text-charcoal/80 hover:text-secondary transition-colors text-sm">
                     {link.name}
                   </Link>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
 
@@ -147,11 +137,9 @@ export const Footer = () => {
           <div>
             <h4 className="font-display text-xl mb-6 text-charcoal">Our Services</h4>
             <ul className="space-y-3">
-              {services.map((service) => (
-                <li key={service}>
+              {services.map(service => <li key={service}>
                   <span className="text-charcoal/80 text-sm">{service}</span>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
 
@@ -162,23 +150,20 @@ export const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-secondary mt-0.5 shrink-0" />
                 <span className="text-charcoal/80 text-sm">
-                  200 E LAS OLAS BLVD 1100
+                  1234 Executive Drive, Suite 500
                   <br />
-                  FORT LAUDERDALE, FL 33301-2209
+                  Houston, Texas 77002
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-secondary shrink-0" />
-                <a href="tel:+18322896124" className="text-charcoal/80 hover:text-secondary transition-colors text-sm">
-                  +1 (832) 289-6124
+                <a href="tel:+17135551234" className="text-white hover:text-secondary transition-colors text-sm">
+                  (713) 555-1234
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-secondary shrink-0" />
-                <a
-                  href="mailto:info@futurelandcapital.com"
-                  className="text-charcoal/80 hover:text-secondary transition-colors text-sm"
-                >
+                <a href="mailto:info@futurelandcapital.com" className="text-charcoal/80 hover:text-secondary transition-colors text-sm">
                   info@futurelandcapital.com
                 </a>
               </li>
@@ -190,11 +175,18 @@ export const Footer = () => {
       {/* Bottom Bar */}
       <div className="border-t border-charcoal/20">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex justify-center items-center text-sm text-charcoal/60">
-            <p>© 2024 Future Land Capital. All rights reserved.</p>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-charcoal/60">
+            <p>© 2026 Future Land Capital. All rights reserved.</p>
+            <div className="flex gap-6">
+              <a href="#" className="hover:text-secondary transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="hover:text-secondary transition-colors">
+                Terms of Service
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
