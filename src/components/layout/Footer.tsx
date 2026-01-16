@@ -5,7 +5,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import futureLandLogo from "@/assets/Future_Land_Logo.png";
-import { Facebook, Instagram, Linkedin, MapPin, Phone, Mail, ArrowRight } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Twitter, MapPin, Phone, Mail, ArrowRight } from "lucide-react";
 const quickLinks = [{
   name: "About Us",
   path: "/about"
@@ -32,6 +32,10 @@ const socialLinks = [{
   icon: Linkedin,
   href: "https://www.linkedin.com/company/111486242",
   label: "LinkedIn"
+}, {
+  icon: Twitter,
+  href: "https://x.com/LandLlc88638",
+  label: "Twitter"
 }];
 export const Footer = () => {
   const [email, setEmail] = useState("");
