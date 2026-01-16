@@ -2,7 +2,7 @@ import { Layout } from "@/components/layout/Layout";
 import { motion } from "framer-motion";
 import { 
   Leaf, Shield, Lightbulb, Award, Users, Target, Eye, 
-  Hammer, Monitor, CheckCircle, Linkedin, Building, Clock
+  Hammer, Monitor, CheckCircle, Building, Clock
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -282,13 +282,7 @@ const About = () => {
                 <div className="p-6 text-center">
                   <h3 className="font-display text-xl text-[#333333]">{member.name}</h3>
                   <p className="text-[#A67C52] font-medium mb-2">{member.role}</p>
-                  <p className="text-[#333333]/70 text-sm mb-4">{member.bio}</p>
-                  <a 
-                    href="#" 
-                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#2D5A3D]/10 text-[#2D5A3D] hover:bg-[#2D5A3D] hover:text-white transition-colors"
-                  >
-                    <Linkedin className="w-5 h-5" />
-                  </a>
+                  <p className="text-[#333333]/70 text-sm">{member.bio}</p>
                 </div>
               </motion.div>
             ))}
