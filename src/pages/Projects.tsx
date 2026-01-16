@@ -12,6 +12,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 const projects = [
   { id: 1, title: "The Oaks Estate", location: "River Oaks, Houston", category: "Residential", value: "$8.5M", image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800", description: "A stunning 12,000 sq ft estate featuring sustainable materials and smart home technology." },
@@ -28,6 +29,7 @@ const categories = ["All", "Residential", "Commercial", "Sustainable"];
 const Projects = () => {
   const [filter, setFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  useDocumentTitle("Projects | Future Land Capital");
 
   const filtered = filter === "All" ? projects : projects.filter((p) => p.category === filter);
 

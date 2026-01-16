@@ -25,6 +25,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 const missionVision = [
   {
@@ -79,6 +80,8 @@ const certifications = [
 ];
 
 const About = () => {
+  useDocumentTitle("About Us | Future Land Capital");
+  
   return (
     <Layout>
       {/* Hero Section */}
