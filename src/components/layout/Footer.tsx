@@ -119,7 +119,7 @@ export const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="text-center">
             <h4 className="font-display text-xl mb-6 text-charcoal">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map(link => <li key={link.path}>
