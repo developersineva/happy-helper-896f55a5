@@ -83,13 +83,13 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer className="bg-[#F5F3EF] text-charcoal">
       {/* Newsletter Section */}
-      <div className="border-b border-primary-foreground/20">
+      <div className="border-b border-charcoal/20">
         <div className="container mx-auto px-4 py-12">
           <div className="max-w-2xl mx-auto text-center">
-            <h3 className="font-display text-3xl mb-3">Stay Updated</h3>
-            <p className="text-primary-foreground/80 mb-6">
+            <h3 className="font-display text-3xl mb-3 text-charcoal">Stay Updated</h3>
+            <p className="text-charcoal/80 mb-6">
               Subscribe to our newsletter for the latest projects, industry insights, and exclusive offers.
             </p>
             <form
@@ -101,13 +101,13 @@ export const Footer = () => {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-primary-foreground/10 border-primary-foreground/30 text-primary-foreground placeholder:text-primary-foreground/50 flex-1"
+                className="bg-white border-charcoal/30 text-charcoal placeholder:text-charcoal/50 flex-1"
                 required
               />
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="bg-secondary hover:bg-secondary/90 text-secondary-foreground"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground"
               >
                 Subscribe
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -126,10 +126,10 @@ export const Footer = () => {
               <img 
                 src={futureLandLogo} 
                 alt="Future Land Capital" 
-                className="h-16 w-auto"
+                className="h-[80px] w-auto"
               />
             </div>
-            <p className="text-primary-foreground/80 text-sm leading-relaxed mb-6">
+            <p className="text-charcoal/80 text-sm leading-relaxed mb-6">
               Building tomorrow's legacy today. Texas' premier sustainable luxury construction company, creating exceptional spaces for discerning clients.
             </p>
             <div className="flex gap-4">
@@ -138,7 +138,7 @@ export const Footer = () => {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center transition-colors hover:bg-secondary hover:text-secondary-foreground"
+                  className="w-10 h-10 rounded-full bg-charcoal/10 flex items-center justify-center text-charcoal transition-colors hover:bg-secondary hover:text-white"
                 >
                   <social.icon size={18} />
                 </a>
@@ -148,13 +148,13 @@ export const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display text-xl mb-6">Quick Links</h4>
+            <h4 className="font-display text-xl mb-6 text-charcoal">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm"
+                    className="text-charcoal/80 hover:text-secondary transition-colors text-sm"
                   >
                     {link.name}
                   </Link>
@@ -165,11 +165,11 @@ export const Footer = () => {
 
           {/* Services */}
           <div>
-            <h4 className="font-display text-xl mb-6">Our Services</h4>
+            <h4 className="font-display text-xl mb-6 text-charcoal">Our Services</h4>
             <ul className="space-y-3">
               {services.map((service) => (
                 <li key={service}>
-                  <span className="text-primary-foreground/80 text-sm">
+                  <span className="text-charcoal/80 text-sm">
                     {service}
                   </span>
                 </li>
@@ -179,11 +179,11 @@ export const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-display text-xl mb-6">Contact Us</h4>
+            <h4 className="font-display text-xl mb-6 text-charcoal">Contact Us</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-secondary mt-0.5 shrink-0" />
-                <span className="text-primary-foreground/80 text-sm">
+                <span className="text-charcoal/80 text-sm">
                   1234 Executive Drive, Suite 500<br />
                   Houston, Texas 77002
                 </span>
@@ -192,7 +192,7 @@ export const Footer = () => {
                 <Phone size={18} className="text-secondary shrink-0" />
                 <a
                   href="tel:+17135551234"
-                  className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm"
+                  className="text-charcoal/80 hover:text-secondary transition-colors text-sm"
                 >
                   (713) 555-1234
                 </a>
@@ -201,7 +201,7 @@ export const Footer = () => {
                 <Mail size={18} className="text-secondary shrink-0" />
                 <a
                   href="mailto:info@futurelandcapital.com"
-                  className="text-primary-foreground/80 hover:text-secondary transition-colors text-sm"
+                  className="text-charcoal/80 hover:text-secondary transition-colors text-sm"
                 >
                   info@futurelandcapital.com
                 </a>
@@ -212,9 +212,9 @@ export const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-primary-foreground/20">
+      <div className="border-t border-charcoal/20">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-primary-foreground/60">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-charcoal/60">
             <p>© 2024 Future Land Capital. All rights reserved.</p>
             <div className="flex gap-6">
               <a href="#" className="hover:text-secondary transition-colors">
