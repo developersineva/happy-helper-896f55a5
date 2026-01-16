@@ -19,7 +19,7 @@ const quickLinks = [{
   name: "Contact",
   path: "/contact"
 }];
-const services = ["Custom Luxury Homes", "Commercial Development", "Green Building", "Land Development", "Renovation", "Project Management"];
+
 const socialLinks = [{
   icon: Facebook,
   href: "#",
@@ -101,7 +101,7 @@ export const Footer = () => {
 
       {/* Main Footer */}
       <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {/* Company Info */}
           <div>
             <div className="mb-6">
@@ -130,15 +130,6 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Services */}
-          <div>
-            <h4 className="font-display text-xl mb-6 text-charcoal">Our Services</h4>
-            <ul className="space-y-3">
-              {services.map(service => <li key={service}>
-                  <span className="text-charcoal/80 text-sm">{service}</span>
-                </li>)}
-            </ul>
-          </div>
 
           {/* Contact Info */}
           <div>
