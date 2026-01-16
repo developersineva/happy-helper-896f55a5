@@ -36,7 +36,7 @@ const missionVision = [
     icon: Eye,
     title: "Our Vision",
     description:
-      "To be Texas's most trusted luxury construction company, known for innovation, integrity, and lasting relationships.",
+      "To be Colombia's most trusted construction company, known for innovation, integrity, and lasting relationships.",
   },
 ];
 
@@ -56,28 +56,10 @@ const values = [
 
 const team = [
   {
-    name: "John Mitchell",
-    role: "CEO & Founder",
-    bio: "30 years experience building Texas's finest homes",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400",
-  },
-  {
-    name: "Sarah Johnson",
-    role: "Project Director",
-    bio: "Commercial specialist with 20+ years expertise",
+    name: "Sofía Alejandra Bermúdez Llanos",
+    role: "Founder & Manager",
+    bio: "Sofía Alejandra Bermúdez Llanos is a goal-oriented executive with over 10 years of experience in the construction industry. As the Manager of Berdez S.A.S. in Bogotá, Colombia, she specializes in leading high-performance teams to deliver exceptional construction projects. A graduate of The Australian National University, Sofía combines international education with local expertise to drive organizational success in Colombia's competitive construction market.",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400",
-  },
-  {
-    name: "Michael Chen",
-    role: "Lead Architect",
-    bio: "Award-winning designer, LEED certified",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
-  },
-  {
-    name: "David Rodriguez",
-    role: "Construction Manager",
-    bio: "On-site excellence, quality assurance expert",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400",
   },
 ];
 
@@ -91,8 +73,8 @@ const achievements = [
 const certifications = [
   { name: "LEED Certified", color: "bg-green-600" },
   { name: "ISO 9001", color: "bg-blue-600" },
-  { name: "Texas Licensed Builder", color: "bg-[#A67C52]" },
-  { name: "BBB A+ Rating", color: "bg-blue-700" },
+  { name: "Colombian Licensed Builder", color: "bg-[#A67C52]" },
+  { name: "S.A.S. Registered", color: "bg-blue-700" },
 ];
 
 const About = () => {
@@ -129,7 +111,7 @@ const About = () => {
             transition={{ delay: 0.1 }}
             className="font-display text-5xl md:text-6xl text-white mb-4"
           >
-            About Future Land Capital
+            About Berdez S.A.S.
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -137,7 +119,7 @@ const About = () => {
             transition={{ delay: 0.2 }}
             className="text-white/80 text-xl max-w-2xl"
           >
-            Building Tomorrow's Legacy in Texas Since 1999
+            Building Excellence in Bogotá, Colombia
           </motion.p>
         </div>
       </section>
@@ -165,10 +147,11 @@ const About = () => {
               <h2 className="font-display text-4xl text-[#333333] mb-6">Our Story</h2>
               <div className="w-16 h-1 bg-[#A67C52] mb-6" />
               <p className="text-[#333333]/80 text-lg leading-relaxed">
-                For over 10 years, Future Land Capital has been at the forefront of luxury construction in Texas. What
-                started as a small family business has grown into one of the most trusted names in premium residential
-                and commercial construction. We combine traditional craftsmanship with innovative sustainable practices
-                to create homes and commercial spaces that stand the test of time.
+                Berdez S.A.S. (Bermudez Construction SAS) has established itself as a leading construction company in
+                Bogotá, Colombia. Under the leadership of Sofía Alejandra Bermúdez Llanos, our company has grown into
+                one of Colombia's most respected construction firms, known for our commitment to quality, innovation,
+                and client satisfaction. As a Sociedad por Acciones Simplificada (S.A.S.), we bring over a decade of
+                executive-level experience in both residential and commercial construction.
               </p>
             </motion.div>
           </div>
@@ -264,15 +247,18 @@ const About = () => {
         </div>
       </section>
 
-      {/* Meet Our Team Section */}
+      {/* Leadership Section */}
       <section className="py-24 bg-[#F5F3EF]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <span className="text-[#A67C52] font-medium tracking-[0.2em] uppercase text-sm mb-4 block">Leadership</span>
-            <h2 className="font-display text-4xl text-[#333333] mb-4">Meet Our Leadership</h2>
-            <div className="w-16 h-1 bg-[#A67C52] mx-auto" />
+            <h2 className="font-display text-4xl text-[#333333] mb-4">Meet Our Founder</h2>
+            <p className="text-[#333333]/70 max-w-2xl mx-auto">
+              Visionary leadership driving Berdez S.A.S. with over a decade of executive experience in Colombia's construction industry.
+            </p>
+            <div className="w-16 h-1 bg-[#A67C52] mx-auto mt-4" />
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="flex justify-center">
             {team.map((member, i) => (
               <motion.div
                 key={member.name}
@@ -280,19 +266,27 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white rounded-lg overflow-hidden shadow-lg"
+                className="bg-white rounded-lg overflow-hidden shadow-lg max-w-lg"
               >
-                <div className="h-64 overflow-hidden">
+                <div className="h-80 overflow-hidden">
                   <img
                     src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                   />
                 </div>
-                <div className="p-6 text-center">
-                  <h3 className="font-display text-xl text-[#333333]">{member.name}</h3>
-                  <p className="text-[#A67C52] font-medium mb-2">{member.role}</p>
-                  <p className="text-[#333333]/70 text-sm">{member.bio}</p>
+                <div className="p-8 text-center">
+                  <h3 className="font-display text-2xl text-[#333333]">{member.name}</h3>
+                  <p className="text-[#A67C52] font-medium mb-4 text-lg">{member.role}</p>
+                  <p className="text-[#333333]/70 text-sm leading-relaxed mb-4">{member.bio}</p>
+                  <div className="pt-4 border-t border-gray-100 text-left">
+                    <p className="text-sm text-[#333333]/60 mb-1">
+                      <span className="font-medium text-[#333333]">Education:</span> The Australian National University
+                    </p>
+                    <p className="text-sm text-[#333333]/60">
+                      <span className="font-medium text-[#333333]">Location:</span> Bogotá, Distrito Capital, Colombia
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             ))}
