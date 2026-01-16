@@ -48,10 +48,10 @@ export const CTABanner = () => {
             <Button
               asChild
               size="lg"
-              className="bg-secondary hover:bg-secondary/90 text-secondary-foreground text-base px-8"
+              className="bg-card hover:bg-card/90 text-charcoal text-base px-8"
             >
               <Link to="/contact">
-                Get Free Consultation
+                Schedule Consultation
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
@@ -59,7 +59,7 @@ export const CTABanner = () => {
               asChild
               size="lg"
               variant="outline"
-              className="border-card text-card hover:bg-card hover:text-foreground text-base px-8"
+              className="border-card bg-card/10 text-charcoal hover:bg-card hover:text-charcoal text-base px-8"
             >
               <a href="tel:+17135551234">
                 <Phone className="mr-2 h-5 w-5" />
