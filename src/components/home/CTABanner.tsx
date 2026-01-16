@@ -48,11 +48,11 @@ export const CTABanner = () => {
             <Button
               asChild
               size="lg"
-              className="bg-card hover:bg-card/90 text-base px-8"
+              className="bg-card hover:bg-card/90 text-ink hover:text-ink text-base px-8"
             >
-              <Link to="/contact" style={{ color: '#000' }}>
+              <Link to="/contact">
                 Schedule Consultation
-                <ArrowRight className="ml-2 h-5 w-5" style={{ color: '#000' }} />
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             <Button
