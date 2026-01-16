@@ -22,7 +22,7 @@ export const Header = () => {
   }, [location]);
 
   return (
-    <header className="relative bg-white border-b border-gray-100 py-3">
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-100 py-3">
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo + Company Name */}
         <Link to="/" className="flex items-center">
@@ -70,7 +70,7 @@ export const Header = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-xl animate-fade-in border-t border-gray-100">
+        <div className="lg:hidden absolute top-full left-0 right-0 z-50 bg-white shadow-xl animate-fade-in border-t border-gray-100">
           <nav className="container mx-auto px-4 py-6 flex flex-col gap-4">
             {navLinks.map((link) => (
               <Link
