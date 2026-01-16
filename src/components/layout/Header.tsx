@@ -47,7 +47,7 @@ export const Header = () => {
           <img 
             src={futureLandLogo} 
             alt="Future Land Capital" 
-            className="h-12 md:h-14 w-auto"
+            className="h-16 md:h-20 w-auto drop-shadow-md"
           />
         </Link>
 
