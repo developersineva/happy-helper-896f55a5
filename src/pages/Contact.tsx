@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { motion } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
@@ -8,6 +9,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 const projectTypes = ["Custom Home", "Commercial Building", "Renovation", "Land Development", "Green Building", "Other"];
 
@@ -44,13 +53,55 @@ const Contact = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="pt-32 pb-20 bg-primary">
-        <div className="container mx-auto px-4 text-center">
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="font-display text-5xl md:text-6xl text-card mb-4">
+      <section className="relative pt-32 pb-20 min-h-[50vh] flex items-center">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1920&q=80')" }}
+        />
+        {/* Dark Green Overlay */}
+        <div className="absolute inset-0 bg-[#2D5A3D]/80" />
+        
+        <div className="container mx-auto px-4 relative z-10">
+          {/* Breadcrumb */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-6"
+          >
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink asChild>
+                    <Link to="/" className="text-white/80 hover:text-white transition-colors">Home</Link>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator className="text-white/60" />
+                <BreadcrumbItem>
+                  <BreadcrumbPage className="text-white">Contact</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+          </motion.div>
+          
+          {/* Heading */}
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ delay: 0.1 }}
+            className="font-display text-5xl md:text-6xl lg:text-7xl text-white mb-6"
+          >
             Contact Us
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-card/80 text-xl max-w-2xl mx-auto">
-            Ready to start your project? Get in touch for a free consultation
+          
+          {/* Subheading */}
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ delay: 0.2 }} 
+            className="text-white/90 text-xl md:text-2xl max-w-2xl"
+          >
+            Let's Build Something Amazing Together
           </motion.p>
         </div>
       </section>
