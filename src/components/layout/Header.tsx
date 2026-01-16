@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import futureLandLogo from "@/assets/Future_Land_Logo.png";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -42,34 +43,12 @@ export const Header = () => {
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-            <svg
-              viewBox="0 0 24 24"
-              className="w-6 h-6 text-primary-foreground"
-              fill="currentColor"
-            >
-              <path d="M12 2L8 6H4v4l-4 4 4 4v4h4l4 4 4-4h4v-4l4-4-4-4V6h-4L12 2zm0 3.5L14.5 8H16v1.5L18.5 12 16 14.5V16h-1.5L12 18.5 9.5 16H8v-1.5L5.5 12 8 9.5V8h1.5L12 5.5z" />
-            </svg>
-          </div>
-          <div className="flex flex-col">
-            <span
-              className={cn(
-                "font-display text-lg font-bold tracking-[0.2em] uppercase transition-colors",
-                isScrolled ? "text-foreground" : "text-card"
-              )}
-            >
-              FUTURE LAND
-            </span>
-            <span
-              className={cn(
-                "text-xs tracking-[0.15em] uppercase transition-colors",
-                isScrolled ? "text-secondary" : "text-secondary"
-              )}
-            >
-              CAPITAL
-            </span>
-          </div>
+        <Link to="/" className="flex items-center">
+          <img 
+            src={futureLandLogo} 
+            alt="Future Land Capital" 
+            className="h-12 md:h-14 w-auto"
+          />
         </Link>
 
         {/* Desktop Navigation */}
