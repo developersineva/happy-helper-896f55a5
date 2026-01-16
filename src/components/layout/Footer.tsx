@@ -149,10 +149,10 @@ export const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-secondary mt-0.5 shrink-0" />
-                <span className="text-charcoal/80 text-sm">
-                  1234 Executive Drive, Suite 500
+              <span className="text-charcoal/80 text-sm">
+                  200 E LAS OLAS BLVD 1100
                   <br />
-                  Houston, Texas 77002
+                  FORT LAUDERDALE, FL 33301-2209
                 </span>
               </li>
               <li className="flex items-center gap-3">
