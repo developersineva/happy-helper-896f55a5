@@ -156,23 +156,6 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Intro Section */}
-      <section className="py-16 bg-[#F5F3EF]">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <p className="text-lg md:text-xl text-[#333333]/80 leading-relaxed">
-              From custom luxury homes to commercial developments, we offer end-to-end construction 
-              services with a commitment to quality, sustainability, and client satisfaction.
-            </p>
-            <div className="w-20 h-1 bg-[#A67C52] mx-auto mt-8" />
-          </motion.div>
-        </div>
-      </section>
 
       {/* Services Grid */}
       <section className="py-24 bg-white">
