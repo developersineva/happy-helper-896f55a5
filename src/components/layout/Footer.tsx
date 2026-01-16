@@ -126,7 +126,7 @@ export const Footer = () => {
               <img 
                 src={futureLandLogo} 
                 alt="Future Land Capital" 
-                className="h-16 w-auto brightness-0 invert"
+                className="h-16 w-auto"
               />
             </div>
             <p className="text-primary-foreground/80 text-sm leading-relaxed mb-6">
