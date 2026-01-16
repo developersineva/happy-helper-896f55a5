@@ -165,7 +165,7 @@ const About = () => {
               <h2 className="font-display text-4xl text-[#333333] mb-6">Our Story</h2>
               <div className="w-16 h-1 bg-[#A67C52] mb-6" />
               <p className="text-[#333333]/80 text-lg leading-relaxed">
-                For over 25 years, Future Land Capital has been at the forefront of luxury construction in Texas. What
+                For over 10 years, Future Land Capital has been at the forefront of luxury construction in Texas. What
                 started as a small family business has grown into one of the most trusted names in premium residential
                 and commercial construction. We combine traditional craftsmanship with innovative sustainable practices
                 to create homes and commercial spaces that stand the test of time.
