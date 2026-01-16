@@ -16,9 +16,6 @@ const quickLinks = [{
   name: "Projects",
   path: "/projects"
 }, {
-  name: "Sustainability",
-  path: "/sustainability"
-}, {
   name: "Contact",
   path: "/contact"
 }];
