@@ -54,6 +54,32 @@ const values = [
   { icon: Lightbulb, title: "Innovation", description: "Modern technology meets traditional craftsmanship" },
 ];
 
+const team = [
+  {
+    name: "John Mitchell",
+    role: "CEO & Founder",
+    bio: "30 years experience building Texas's finest homes",
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400",
+  },
+  {
+    name: "Sarah Johnson",
+    role: "Project Director",
+    bio: "Commercial specialist with 20+ years expertise",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400",
+  },
+  {
+    name: "Michael Chen",
+    role: "Lead Architect",
+    bio: "Award-winning designer, LEED certified",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
+  },
+  {
+    name: "David Rodriguez",
+    role: "Construction Manager",
+    bio: "On-site excellence, quality assurance expert",
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400",
+  },
+];
 
 const achievements = [
   { value: "500+", label: "Projects Completed" },
@@ -139,7 +165,7 @@ const About = () => {
               <h2 className="font-display text-4xl text-[#333333] mb-6">Our Story</h2>
               <div className="w-16 h-1 bg-[#A67C52] mb-6" />
               <p className="text-[#333333]/80 text-lg leading-relaxed">
-                For over 10 years, Future Land Capital has been at the forefront of luxury construction in Texas. What
+                For over 25 years, Future Land Capital has been at the forefront of luxury construction in Texas. What
                 started as a small family business has grown into one of the most trusted names in premium residential
                 and commercial construction. We combine traditional craftsmanship with innovative sustainable practices
                 to create homes and commercial spaces that stand the test of time.
@@ -238,12 +264,47 @@ const About = () => {
         </div>
       </section>
 
+      {/* Meet Our Team Section */}
+      <section className="py-24 bg-[#F5F3EF]">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="text-[#A67C52] font-medium tracking-[0.2em] uppercase text-sm mb-4 block">Leadership</span>
+            <h2 className="font-display text-4xl text-[#333333] mb-4">Meet Our Leadership</h2>
+            <div className="w-16 h-1 bg-[#A67C52] mx-auto" />
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {team.map((member, i) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-white rounded-lg overflow-hidden shadow-lg"
+              >
+                <div className="h-64 overflow-hidden">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="font-display text-xl text-[#333333]">{member.name}</h3>
+                  <p className="text-[#A67C52] font-medium mb-2">{member.role}</p>
+                  <p className="text-[#333333]/70 text-sm">{member.bio}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Achievements Section */}
       <section className="py-24 bg-[#2D5A3D]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl text-white mb-4">25 Years Building Dreams</h2>
+            <h2 className="font-display text-4xl text-white mb-4">10 Years Building Dreams</h2>
             <div className="w-16 h-1 bg-[#A67C52] mx-auto" />
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
