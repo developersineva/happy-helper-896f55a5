@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, Facebook, Instagram, Linkedin } from "lucide-react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -189,6 +189,40 @@ const Contact = () => {
                     <h4 className="font-display text-lg text-foreground">Office Hours</h4>
                     <p className="text-muted-foreground">Mon-Fri: 9:00 AM - 6:00 PM<br />Sat: 9:00 AM - 2:00 PM</p>
                   </div>
+                </div>
+              </div>
+              
+              {/* Social Media */}
+              <div className="pt-6 border-t border-gray-200">
+                <h4 className="font-display text-lg text-foreground mb-4">Follow Us</h4>
+                <div className="flex gap-4">
+                  <a 
+                    href="https://www.instagram.com/future.land.capital"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    className="w-12 h-12 rounded-lg bg-accent flex items-center justify-center text-primary transition-colors hover:bg-secondary hover:text-white"
+                  >
+                    <Instagram className="w-6 h-6" />
+                  </a>
+                  <a 
+                    href="https://www.facebook.com/share/14NfnyjRFpe/?mibextid=wwXIfr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    className="w-12 h-12 rounded-lg bg-accent flex items-center justify-center text-primary transition-colors hover:bg-secondary hover:text-white"
+                  >
+                    <Facebook className="w-6 h-6" />
+                  </a>
+                  <a 
+                    href="https://www.linkedin.com/company/111486242"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="w-12 h-12 rounded-lg bg-accent flex items-center justify-center text-primary transition-colors hover:bg-secondary hover:text-white"
+                  >
+                    <Linkedin className="w-6 h-6" />
+                  </a>
                 </div>
               </div>
             </motion.div>
