@@ -15,69 +15,55 @@ const navLinks = [
 ];
 
 export const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location]);
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-card/95 backdrop-blur-md shadow-lg py-3"
-          : "bg-transparent py-5"
-      )}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100 py-3">
       <div className="container mx-auto px-4 flex items-center justify-between">
-        {/* Logo */}
-        <Link to="/" className="flex items-center">
+        {/* Logo + Company Name */}
+        <Link to="/" className="flex items-center gap-3">
           <img 
             src={futureLandLogo} 
             alt="Future Land Capital" 
-            className="h-16 md:h-20 w-auto drop-shadow-md"
+            className="h-12 md:h-14 w-auto"
           />
+          <div className="hidden md:flex flex-col">
+            <span className="font-display font-semibold text-lg tracking-wide text-foreground uppercase">
+              Future Land Capital
+            </span>
+            <span className="text-xs text-secondary tracking-wider">
+              Sustainable Luxury Living
+            </span>
+          </div>
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* Centered Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
               className={cn(
-                "relative text-sm font-medium uppercase tracking-wider transition-colors hover:text-secondary",
+                "text-sm font-medium uppercase tracking-wider transition-colors",
                 location.pathname === link.path
                   ? "text-secondary"
-                  : isScrolled
-                  ? "text-foreground"
-                  : "text-card"
+                  : "text-muted-foreground hover:text-secondary"
               )}
             >
               {link.name}
-              {location.pathname === link.path && (
-                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary" />
-              )}
             </Link>
           ))}
         </nav>
 
-        {/* CTA Button */}
+        {/* Get Quote Button */}
         <Button
           asChild
-          className="hidden lg:flex bg-secondary hover:bg-secondary/90 text-secondary-foreground"
+          className="hidden lg:flex bg-secondary hover:bg-secondary/90 text-secondary-foreground rounded-full px-6"
         >
           <Link to="/contact">Get Quote</Link>
         </Button>
@@ -85,10 +71,7 @@ export const Header = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className={cn(
-            "lg:hidden p-2 transition-colors",
-            isScrolled ? "text-foreground" : "text-card"
-          )}
+          className="lg:hidden p-2 text-foreground"
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -96,17 +79,17 @@ export const Header = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-card shadow-xl animate-fade-in">
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-xl animate-fade-in border-t border-gray-100">
           <nav className="container mx-auto px-4 py-6 flex flex-col gap-4">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "text-base font-medium uppercase tracking-wider py-2 border-b border-border transition-colors hover:text-secondary",
+                  "text-base font-medium uppercase tracking-wider py-2 border-b border-gray-100 transition-colors",
                   location.pathname === link.path
                     ? "text-secondary"
-                    : "text-foreground"
+                    : "text-foreground hover:text-secondary"
                 )}
               >
                 {link.name}
@@ -114,7 +97,7 @@ export const Header = () => {
             ))}
             <Button
               asChild
-              className="mt-4 bg-secondary hover:bg-secondary/90 text-secondary-foreground"
+              className="mt-4 bg-secondary hover:bg-secondary/90 text-secondary-foreground rounded-full"
             >
               <Link to="/contact">Get Quote</Link>
             </Button>
