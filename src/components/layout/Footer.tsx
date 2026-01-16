@@ -5,16 +5,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import futureLandLogo from "@/assets/Future_Land_Logo.png";
-import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  Twitter,
-  MapPin,
-  Phone,
-  Mail,
-  ArrowRight,
-} from "lucide-react";
+import { Facebook, Instagram, Linkedin, Twitter, MapPin, Phone, Mail, ArrowRight } from "lucide-react";
 
 const quickLinks = [
   { name: "About Us", path: "/about" },
@@ -51,9 +42,7 @@ export const Footer = () => {
 
     setIsLoading(true);
     try {
-      const { error } = await supabase
-        .from("newsletter_subscriptions")
-        .insert({ email: email.trim() });
+      const { error } = await supabase.from("newsletter_subscriptions").insert({ email: email.trim() });
 
       if (error) {
         if (error.code === "23505") {
@@ -92,10 +81,7 @@ export const Footer = () => {
             <p className="text-charcoal/80 mb-6">
               Subscribe to our newsletter for the latest projects, industry insights, and exclusive offers.
             </p>
-            <form
-              onSubmit={handleNewsletterSubmit}
-              className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-            >
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <Input
                 type="email"
                 placeholder="Enter your email"
@@ -123,14 +109,11 @@ export const Footer = () => {
           {/* Company Info */}
           <div>
             <div className="mb-6">
-              <img 
-                src={futureLandLogo} 
-                alt="Future Land Capital" 
-                className="h-[80px] w-auto"
-              />
+              <img src={futureLandLogo} alt="Future Land Capital" className="h-[80px] w-auto" />
             </div>
             <p className="text-charcoal/80 text-sm leading-relaxed mb-6">
-              Building tomorrow's legacy today. Texas' premier sustainable luxury construction company, creating exceptional spaces for discerning clients.
+              Building tomorrow's legacy today. Texas' premier sustainable luxury construction company, creating
+              exceptional spaces for discerning clients.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
@@ -152,10 +135,7 @@ export const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="text-charcoal/80 hover:text-secondary transition-colors text-sm"
-                  >
+                  <Link to={link.path} className="text-charcoal/80 hover:text-secondary transition-colors text-sm">
                     {link.name}
                   </Link>
                 </li>
@@ -169,9 +149,7 @@ export const Footer = () => {
             <ul className="space-y-3">
               {services.map((service) => (
                 <li key={service}>
-                  <span className="text-charcoal/80 text-sm">
-                    {service}
-                  </span>
+                  <span className="text-charcoal/80 text-sm">{service}</span>
                 </li>
               ))}
             </ul>
@@ -184,16 +162,14 @@ export const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-secondary mt-0.5 shrink-0" />
                 <span className="text-charcoal/80 text-sm">
-                  1234 Executive Drive, Suite 500<br />
+                  1234 Executive Drive, Suite 500
+                  <br />
                   Houston, Texas 77002
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-secondary shrink-0" />
-                <a
-                  href="tel:+17135551234"
-                  className="text-charcoal/80 hover:text-secondary transition-colors text-sm"
-                >
+                <a href="tel:+17135551234" className="text-white hover:text-secondary transition-colors text-sm">
                   (713) 555-1234
                 </a>
               </li>
