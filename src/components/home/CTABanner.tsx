@@ -48,7 +48,7 @@ export const CTABanner = () => {
             <Button
               asChild
               size="lg"
-              className="bg-card hover:bg-card/90 text-black text-base px-8"
+              className="bg-card hover:bg-card/90 !text-black text-base px-8"
             >
               <Link to="/contact">
                 Schedule Consultation
