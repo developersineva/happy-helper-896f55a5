@@ -61,9 +61,9 @@ export const CTABanner = () => {
               variant="outline"
               className="border-card bg-card/10 text-white hover:bg-card hover:text-ink text-base px-8"
             >
-              <a href="tel:+17135551234" className="text-white hover:text-ink">
+              <a href="tel:+18322896124" className="text-white hover:text-ink">
                 <Phone className="mr-2 h-5 w-5" />
-                (713) 555-1234
+                +1 (832) 289-6124
               </a>
             </Button>
           </motion.div>
