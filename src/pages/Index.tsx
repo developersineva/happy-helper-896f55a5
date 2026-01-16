@@ -6,7 +6,6 @@ import { VisionToReality } from "@/components/home/VisionToReality";
 import { FeaturedProjects } from "@/components/home/FeaturedProjects";
 import { Testimonials } from "@/components/home/Testimonials";
 import { Stats } from "@/components/home/Stats";
-import { CTABanner } from "@/components/home/CTABanner";
 
 const Index = () => {
   return (
@@ -18,7 +17,6 @@ const Index = () => {
       <FeaturedProjects />
       <Testimonials />
       <Stats />
-      <CTABanner />
     </Layout>
   );
 };
