@@ -59,9 +59,9 @@ export const CTABanner = () => {
               asChild
               size="lg"
               variant="outline"
-              className="border-card bg-card/10 text-charcoal hover:bg-card hover:text-charcoal text-base px-8"
+              className="border-card bg-card/10 text-white hover:bg-card hover:text-ink text-base px-8"
             >
-              <a href="tel:+17135551234">
+              <a href="tel:+17135551234" className="text-white hover:text-ink">
                 <Phone className="mr-2 h-5 w-5" />
                 (713) 555-1234
               </a>
