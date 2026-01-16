@@ -101,12 +101,26 @@ export const FeaturedProjects = () => {
                 </span>
               </div>
 
+              {/* Hover Overlay with View Project Button */}
+              <div className="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <Button
+                  asChild
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-primary"
+                >
+                  <Link to="/projects">
+                    View Project
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+
               {/* Content */}
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary via-primary/80 to-transparent p-6 pt-16">
-                <h3 className="font-display text-xl text-card mb-1">
+                <h3 className="font-display text-xl text-white mb-1">
                   {project.title}
                 </h3>
-                <div className="flex items-center text-card/80 text-sm mb-2">
+                <div className="flex items-center text-white/80 text-sm mb-2">
                   <MapPin size={14} className="mr-1" />
                   {project.location}
                 </div>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const testimonials = [
@@ -12,6 +12,7 @@ const testimonials = [
     role: "Homeowners, River Oaks",
     image:
       "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+    rating: 5,
   },
   {
     id: 2,
@@ -21,6 +22,7 @@ const testimonials = [
     role: "CEO, TechVentures Inc.",
     image:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+    rating: 5,
   },
   {
     id: 3,
@@ -30,6 +32,7 @@ const testimonials = [
     role: "Property Developer",
     image:
       "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+    rating: 5,
   },
 ];
 
@@ -64,7 +67,7 @@ export const Testimonials = () => {
             transition={{ delay: 0.1 }}
             className="font-display text-4xl md:text-5xl text-foreground mb-4"
           >
-            What Our Clients Say
+            See the Transformation
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, scaleX: 0 }}
@@ -90,6 +93,13 @@ export const Testimonials = () => {
                 transition={{ duration: 0.3 }}
                 className="text-center"
               >
+                {/* Star Rating */}
+                <div className="flex justify-center gap-1 mb-6">
+                  {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-secondary text-secondary" />
+                  ))}
+                </div>
+
                 <p className="text-lg md:text-xl text-foreground leading-relaxed mb-8 italic">
                   "{testimonials[currentIndex].content}"
                 </p>
