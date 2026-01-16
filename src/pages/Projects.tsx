@@ -42,7 +42,7 @@ const Projects = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-3">
             {categories.map((cat) => (
-              <Button key={cat} variant={filter === cat ? "default" : "outline"} onClick={() => setFilter(cat)} className={filter === cat ? "bg-primary text-primary-foreground" : "border-primary text-primary hover:bg-primary hover:text-primary-foreground"}>
+              <Button key={cat} variant={filter === cat ? "default" : "outline"} onClick={() => setFilter(cat)} className={filter === cat ? "bg-primary text-primary-foreground" : "border-primary text-charcoal hover:bg-primary hover:text-primary-foreground"}>
                 {cat}
               </Button>
             ))}
