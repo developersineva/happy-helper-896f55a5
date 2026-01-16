@@ -15,6 +15,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import servicesHero from "@/assets/services-hero.jpg";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 const services = [
   { 
@@ -106,6 +107,8 @@ const whyChooseUs = [
 ];
 
 const Services = () => {
+  useDocumentTitle("Our Services | Future Land Capital");
+  
   return (
     <Layout>
       {/* Hero Section */}

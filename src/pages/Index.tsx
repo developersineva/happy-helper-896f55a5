@@ -6,8 +6,11 @@ import { VisionToReality } from "@/components/home/VisionToReality";
 import { FeaturedProjects } from "@/components/home/FeaturedProjects";
 import { Testimonials } from "@/components/home/Testimonials";
 import { Stats } from "@/components/home/Stats";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 const Index = () => {
+  useDocumentTitle("Future Land Capital | Premium Construction in Colombia");
+  
   return (
     <Layout>
       <Hero />

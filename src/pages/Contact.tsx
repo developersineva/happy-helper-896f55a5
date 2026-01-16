@@ -17,6 +17,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 const projectTypes = ["Custom Home", "Commercial Building", "Renovation", "Land Development", "Green Building", "Other"];
 
@@ -24,6 +25,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", projectType: "", message: "" });
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  useDocumentTitle("Contact Us | Future Land Capital");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
