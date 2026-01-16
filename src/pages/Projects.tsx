@@ -1,8 +1,17 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 const projects = [
   { id: 1, title: "The Oaks Estate", location: "River Oaks, Houston", category: "Residential", value: "$8.5M", image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800", description: "A stunning 12,000 sq ft estate featuring sustainable materials and smart home technology." },
@@ -25,13 +34,55 @@ const Projects = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="pt-32 pb-20 bg-primary">
-        <div className="container mx-auto px-4 text-center">
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="font-display text-5xl md:text-6xl text-card mb-4">
+      <section className="relative pt-32 pb-20 min-h-[50vh] flex items-center">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80')" }}
+        />
+        {/* Dark Green Overlay */}
+        <div className="absolute inset-0 bg-[#2D5A3D]/80" />
+        
+        <div className="container mx-auto px-4 relative z-10">
+          {/* Breadcrumb */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-6"
+          >
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink asChild>
+                    <Link to="/" className="text-white/80 hover:text-white transition-colors">Home</Link>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator className="text-white/60" />
+                <BreadcrumbItem>
+                  <BreadcrumbPage className="text-white">Projects</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+          </motion.div>
+          
+          {/* Heading */}
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ delay: 0.1 }}
+            className="font-display text-5xl md:text-6xl lg:text-7xl text-white mb-6"
+          >
             Our Projects
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-card/80 text-xl max-w-2xl mx-auto">
-            Explore our portfolio of luxury residential and commercial developments
+          
+          {/* Subheading */}
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ delay: 0.2 }} 
+            className="text-white/90 text-xl md:text-2xl max-w-2xl"
+          >
+            From Vision to Reality - See Our Completed Work
           </motion.p>
         </div>
       </section>
