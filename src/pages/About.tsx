@@ -321,61 +321,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Certifications Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center items-center gap-6 mb-8">
-            {certifications.map((cert, i) => (
-              <motion.div 
-                key={cert.name}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className={`${cert.color} text-white px-6 py-3 rounded-full font-medium text-sm`}
-              >
-                {cert.name}
-              </motion.div>
-            ))}
-          </div>
-          <p className="text-center text-[#333333]/70">Fully licensed, bonded, and insured</p>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 bg-[#F5F3EF]">
-        <div className="container mx-auto px-4 text-center">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-display text-4xl text-[#333333] mb-8"
-          >
-            Ready to Build with the Best?
-          </motion.h2>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <Button 
-              asChild
-              className="bg-[#A67C52] hover:bg-[#8B6844] text-white px-8 py-6 text-lg"
-            >
-              <Link to="/projects">View Our Projects</Link>
-            </Button>
-            <Button 
-              asChild
-              variant="outline"
-              className="border-2 border-[#333333] text-[#333333] hover:bg-[#333333] hover:text-white px-8 py-6 text-lg"
-            >
-              <Link to="/contact">Contact Us</Link>
-            </Button>
-          </motion.div>
-        </div>
-      </section>
     </Layout>
   );
 };
