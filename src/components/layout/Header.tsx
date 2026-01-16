@@ -23,14 +23,14 @@ export const Header = () => {
   }, [location]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100 py-3">
+    <header className="relative bg-white border-b border-gray-100 py-3">
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo + Company Name */}
         <Link to="/" className="flex items-center">
           <img 
             src={futureLandLogo} 
             alt="Future Land Capital" 
-            className="h-12 md:h-14 w-auto"
+            className="h-[70px] w-auto"
           />
         </Link>
 
