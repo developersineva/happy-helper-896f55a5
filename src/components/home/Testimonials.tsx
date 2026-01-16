@@ -10,8 +10,6 @@ const testimonials = [
       "Future Land Capital exceeded all our expectations. Our dream home is not just beautiful—it's sustainable, energy-efficient, and built to last generations. Their attention to detail is unmatched.",
     author: "Sarah & Michael Thompson",
     role: "Homeowners, River Oaks",
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
     rating: 5,
   },
   {
@@ -20,8 +18,6 @@ const testimonials = [
       "Working with the Future Land Capital team on our corporate headquarters was seamless. They delivered a stunning, LEED-certified building on time and within budget. True professionals.",
     author: "James Rodriguez",
     role: "CEO, TechVentures Inc.",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
     rating: 5,
   },
   {
@@ -30,8 +26,6 @@ const testimonials = [
       "From the initial consultation to the final walkthrough, the experience was exceptional. They transformed our vision into reality while respecting the natural landscape of our property.",
     author: "Elizabeth Chen",
     role: "Property Developer",
-    image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
     rating: 5,
   },
 ];
@@ -104,11 +98,14 @@ export const Testimonials = () => {
                   "{testimonials[currentIndex].content}"
                 </p>
                 <div className="flex flex-col items-center">
-                  <img
-                    src={testimonials[currentIndex].image}
-                    alt={testimonials[currentIndex].author}
-                    className="w-16 h-16 rounded-full object-cover border-4 border-secondary mb-4"
-                  />
+                  <div 
+                    className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
+                    style={{ backgroundColor: '#2D5A3D' }}
+                  >
+                    <span className="text-white font-display text-2xl font-semibold">
+                      {testimonials[currentIndex].author.charAt(0).toUpperCase()}
+                    </span>
+                  </div>
                   <h4 className="font-display text-xl text-foreground">
                     {testimonials[currentIndex].author}
                   </h4>
