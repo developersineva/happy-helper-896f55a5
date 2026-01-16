@@ -12,7 +12,6 @@ const projects = [
   { id: 5, title: "Innovation Hub", location: "The Woodlands", category: "Commercial", value: "$28M", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800", description: "Modern tech campus with collaborative spaces and green building features." },
   { id: 6, title: "Eco Villa", location: "San Antonio", category: "Sustainable", value: "$3.8M", image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800", description: "Award-winning sustainable home built with reclaimed materials and passive solar design." },
   { id: 7, title: "Highland Retreat", location: "Hill Country", category: "Residential", value: "$7.2M", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800", description: "Contemporary ranch home blending modern design with Texas Hill Country aesthetics." },
-  { id: 8, title: "Metro Plaza", location: "Houston Galleria", category: "Commercial", value: "$55M", image: "https://images.unsplash.com/photo-1545324418-cc6a8b25d7b6?w=800", description: "Mixed-use development featuring retail, office, and luxury residential spaces." },
 ];
 
 const categories = ["All", "Residential", "Commercial", "Sustainable"];
