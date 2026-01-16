@@ -144,7 +144,7 @@ const Contact = () => {
                   <label className="block text-sm font-medium mb-2">Message *</label>
                   <Textarea value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} placeholder="Tell us about your project..." rows={5} required />
                 </div>
-                <Button type="submit" disabled={isLoading} size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground w-full md:w-auto">
+                <Button type="submit" disabled={isLoading} size="lg" className="bg-[#2f5b41] hover:bg-[#2f5b41]/90 text-white w-full md:w-auto">
                   {isLoading ? "Sending..." : "Send Message"} <Send className="ml-2 h-5 w-5" />
                 </Button>
               </form>
