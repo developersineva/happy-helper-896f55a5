@@ -26,20 +26,12 @@ export const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100 py-3">
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo + Company Name */}
-        <Link to="/" className="flex items-center gap-3">
+        <Link to="/" className="flex items-center">
           <img 
             src={futureLandLogo} 
             alt="Future Land Capital" 
             className="h-12 md:h-14 w-auto"
           />
-          <div className="hidden md:flex flex-col">
-            <span className="font-display font-semibold text-lg tracking-wide text-foreground uppercase">
-              Future Land Capital
-            </span>
-            <span className="text-xs text-secondary tracking-wider">
-              Sustainable Luxury Living
-            </span>
-          </div>
         </Link>
 
         {/* Centered Navigation */}
