@@ -36,23 +36,23 @@ const StatItem = ({ value, suffix, label, delay }: StatItemProps) => {
       className="text-center"
     >
       <div className="flex items-baseline justify-center gap-1">
-        <motion.span className="font-display text-5xl md:text-6xl text-card">
+        <motion.span className="font-display text-5xl md:text-6xl text-white">
           {rounded}
         </motion.span>
         <span className="font-display text-3xl md:text-4xl text-secondary">
           {suffix}
         </span>
       </div>
-      <p className="text-card/80 mt-2 text-lg">{label}</p>
+      <p className="text-white/80 mt-2 text-lg">{label}</p>
     </motion.div>
   );
 };
 
 const stats = [
-  { value: 25, suffix: "+", label: "Years of Excellence" },
+  { value: 25, suffix: "+", label: "Years Experience" },
   { value: 500, suffix: "+", label: "Projects Completed" },
   { value: 100, suffix: "%", label: "Client Satisfaction" },
-  { value: 50, suffix: "+", label: "Design Awards" },
+  { value: 15, suffix: "+", label: "Industry Awards" },
 ];
 
 export const Stats = () => {
@@ -62,7 +62,7 @@ export const Stats = () => {
       <div className="absolute inset-0 opacity-5">
         <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
           <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-card" />
+            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-white" />
           </pattern>
           <rect width="100%" height="100%" fill="url(#grid)" />
         </svg>

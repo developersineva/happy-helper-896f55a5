@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export const Hero = () => {
   return (
@@ -14,26 +14,19 @@ export const Hero = () => {
             "url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2075&q=80')",
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/50" />
-      </div>
-
-      {/* Decorative Elements */}
-      <div className="absolute top-1/4 right-10 w-64 h-64 opacity-10">
-        <svg viewBox="0 0 100 100" fill="currentColor" className="text-secondary">
-          <path d="M50 5L60 40H95L67 60L77 95L50 75L23 95L33 60L5 40H40L50 5Z" />
-        </svg>
+        <div className="absolute inset-0 bg-black/60" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4">
-        <div className="max-w-3xl">
+        <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
             <span className="inline-block text-secondary font-medium tracking-[0.2em] uppercase text-sm mb-4">
-              Sustainable Luxury Living
+              Quality You Can Trust
             </span>
           </motion.div>
 
@@ -41,26 +34,26 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-display text-5xl md:text-6xl lg:text-7xl text-card leading-tight mb-6"
+            className="font-display text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-6"
           >
-            Building Tomorrow's{" "}
-            <span className="text-secondary">Legacy</span> Today
+            Built Right from the{" "}
+            <span className="text-secondary">Ground Up</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-card/90 text-lg md:text-xl leading-relaxed mb-8 max-w-2xl"
+            className="text-white/90 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto"
           >
-            Texas' premier luxury construction company, crafting exceptional homes and commercial spaces that blend timeless elegance with sustainable innovation.
+            Expert Builders. 15+ Years Average Experience. Every foundation, every detail, every finish - built to last a lifetime.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4"
+            className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Button
               asChild
@@ -68,7 +61,7 @@ export const Hero = () => {
               className="bg-secondary hover:bg-secondary/90 text-secondary-foreground text-base px-8"
             >
               <Link to="/projects">
-                View Our Projects
+                See Our Projects
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
@@ -76,9 +69,9 @@ export const Hero = () => {
               asChild
               size="lg"
               variant="outline"
-              className="border-card bg-card/95 text-ink hover:bg-card hover:text-ink text-base px-8"
+              className="border-white bg-transparent text-white hover:bg-white hover:text-foreground text-base px-8"
             >
-              <Link to="/contact">Schedule Consultation</Link>
+              <Link to="/contact">Get Free Quote</Link>
             </Button>
           </motion.div>
         </div>
@@ -91,13 +84,13 @@ export const Hero = () => {
         transition={{ delay: 1, duration: 0.6 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
-        <div className="flex flex-col items-center text-card/60">
+        <div className="flex flex-col items-center text-white/60">
           <span className="text-xs uppercase tracking-widest mb-2">Scroll</span>
-          <div className="w-5 h-8 border-2 border-card/40 rounded-full flex justify-center">
+          <div className="w-5 h-8 border-2 border-white/40 rounded-full flex justify-center">
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ repeat: Infinity, duration: 1.5 }}
-              className="w-1.5 h-1.5 bg-card/60 rounded-full mt-1.5"
+              className="w-1.5 h-1.5 bg-white/60 rounded-full mt-1.5"
             />
           </div>
         </div>
