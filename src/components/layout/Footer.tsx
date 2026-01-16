@@ -175,16 +175,8 @@ export const Footer = () => {
       {/* Bottom Bar */}
       <div className="border-t border-charcoal/20">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-charcoal/60">
+          <div className="text-center text-sm text-charcoal/60">
             <p>© 2026 Future Land Capital. All rights reserved.</p>
-            <div className="flex gap-6">
-              <a href="#" className="hover:text-secondary transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="hover:text-secondary transition-colors">
-                Terms of Service
-              </a>
-            </div>
           </div>
         </div>
       </div>
