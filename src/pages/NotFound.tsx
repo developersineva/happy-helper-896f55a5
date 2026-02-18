@@ -4,7 +4,7 @@ import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 const NotFound = () => {
   const location = useLocation();
-  useDocumentTitle("Page Not Found | Future Land Capital");
+  useDocumentTitle({ title: "Page Not Found | Future Land Capital", description: "The page you're looking for doesn't exist. Return to Future Land Capital's homepage." });
 
   useEffect(() => {
     console.error("404 Error: User attempted to access non-existent route:", location.pathname);
