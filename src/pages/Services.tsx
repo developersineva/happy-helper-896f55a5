@@ -107,7 +107,7 @@ const whyChooseUs = [
 ];
 
 const Services = () => {
-  useDocumentTitle("Our Services | Future Land Capital");
+  useDocumentTitle({ title: "Our Services | Future Land Capital", description: "Explore Future Land Capital's full range of construction services — from custom luxury homes and commercial development to sustainable green building in Bogotá, Colombia." });
   
   return (
     <Layout>

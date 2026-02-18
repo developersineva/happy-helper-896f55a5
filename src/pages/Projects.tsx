@@ -29,7 +29,7 @@ const categories = ["All", "Residential", "Commercial", "Sustainable"];
 const Projects = () => {
   const [filter, setFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
-  useDocumentTitle("Projects | Future Land Capital");
+  useDocumentTitle({ title: "Projects | Future Land Capital", description: "Browse Future Land Capital's portfolio of completed residential and commercial construction projects across Colombia. Quality craftsmanship at every scale." });
 
   const filtered = filter === "All" ? projects : projects.filter((p) => p.category === filter);
 

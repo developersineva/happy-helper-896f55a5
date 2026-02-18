@@ -80,7 +80,7 @@ const certifications = [
 ];
 
 const About = () => {
-  useDocumentTitle("About Us | Future Land Capital");
+  useDocumentTitle({ title: "About Us | Future Land Capital", description: "Learn about Future Land Capital's mission, values, and the team behind Colombia's top construction projects. Led by founder Sofía Alejandra Bermúdez Llanos." });
   
   return (
     <Layout>
