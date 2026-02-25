@@ -1,82 +1,66 @@
 
-## Add Per-Page Meta Titles & Descriptions (On-Page SEO)
 
-### Current State
-- The `index.html` has static meta tags (title, description, og:title, og:description) that never change as users navigate between pages — all pages share the same meta description.
-- The `useDocumentTitle` hook only updates `document.title` (the browser tab), not the `<meta name="description">`, og tags, or Twitter card tags.
+## Create Standalone Remodeling Landing Page
 
-### Approach
-Upgrade the existing `useDocumentTitle` hook into a more capable `useSEO` hook that dynamically updates **all** relevant meta tags in the document `<head>` on every page navigation. This is the standard SPA approach for React apps without SSR.
+### Overview
+Build a dedicated landing page at `/remodel` with no header or footer — a self-contained, conversion-focused page for South Florida home remodeling services with financing options.
 
----
+### Route
+Add `/remodel` route in `src/App.tsx` pointing to a new `src/pages/Remodel.tsx` page component.
 
-### Files to Change
+### Page Structure (single file: `src/pages/Remodel.tsx`)
+No `<Layout>` wrapper — no header, no footer. The page will use the existing design system (Cormorant Garamond headings, Lato body, gold/green brand colors) with framer-motion animations.
 
-**1. Replace `src/hooks/useDocumentTitle.ts` → rename/upgrade to `src/hooks/useSEO.ts`**
+**Section 1 — Hero**
+- Full-viewport hero with a luxury kitchen remodel background image (Unsplash)
+- Dark overlay
+- Headline: "Remodel Your Home Today. Pay After 90 Days*"
+- Subheadline about luxury kitchen, bathroom & impact window remodeling
+- 3 checkmark bullet points (premium design, flexible financing, licensed & insured)
+- Gold CTA button: "Book Your Free Design Consultation"
+- Micro-text below: "Financing subject to approval. Projects starting at $20,000+."
 
-New hook that updates:
-- `document.title`
-- `<meta name="description">`
-- `<meta property="og:title">`
-- `<meta property="og:description">`
-- `<meta name="twitter:title">`
-- `<meta name="twitter:description">`
+**Section 2 — Problem + Positioning**
+- Headline: "Your Home Should Reflect the Life You've Built."
+- Body copy about South Florida homeowners, outdated spaces, and structured financing
+- Clean typography on cream/off-white background
 
-```typescript
-export const useSEO = ({ title, description }: { title: string; description: string }) => {
-  useEffect(() => {
-    // Page title
-    document.title = title;
+**Section 3 — Remodeling Expertise (4-column grid)**
+- Section title: "Our Remodeling Expertise"
+- 4 cards with icons: Luxury Kitchen, Bathroom Transformations, Impact Windows & Doors, Full Interior Renovations
+- Each card has title + short description
+- CTA: "Request My Free Estimate"
 
-    // Helper to set or create meta tags
-    const setMeta = (selector: string, content: string) => {
-      let el = document.querySelector(selector) as HTMLMetaElement | null;
-      if (!el) {
-        el = document.createElement("meta");
-        // set name or property attribute from selector
-        document.head.appendChild(el);
-      }
-      el.content = content;
-    };
+**Section 4 — Financing**
+- Headline: "Flexible Financing Designed for Smart Homeowners"
+- 3 bullet items: 90-day deferral, 12–60 month plans, competitive rates
+- Gold CTA: "Check If I Qualify"
+- Footer note about credit approval
 
-    setMeta('meta[name="description"]', description);
-    setMeta('meta[property="og:title"]', title);
-    setMeta('meta[property="og:description"]', description);
-    setMeta('meta[name="twitter:title"]', title);
-    setMeta('meta[name="twitter:description"]', description);
-  }, [title, description]);
-};
-```
+**Section 5 — Trust**
+- Headline: "Trusted Across South Florida"
+- 4 trust badges with checkmarks: Licensed & Insured, 5-Star Reviews, High-End Craftsmanship, Transparent Pricing
 
-**2. Keep `src/hooks/useDocumentTitle.ts` as a thin wrapper** (for backward compatibility, since it's already imported in several places — we update it to call useSEO internally), OR update all page imports at once. Since there are only 6 pages, we'll update all imports directly.
+**Section 6 — Before/After Transformations**
+- Side-by-side before/after image pairs (Unsplash images of remodels)
+- CTA: "Start My Remodel"
 
----
+**Section 7 — Final CTA / Footer strip**
+- Simple bottom bar with company name, phone, and a final CTA button
+- No full site footer
 
-**3. Update each page with unique title + description:**
+### SEO
+- Uses `useDocumentTitle` hook with title: "Remodel Your Home | Future Land Capital" and description about South Florida remodeling.
 
-| Page | File | Title | Meta Description |
-|------|------|-------|-----------------|
-| Home | `Index.tsx` | Future Land Capital \| Premium Construction in Colombia | Future Land Capital is Bogotá's premier construction company, delivering luxury residential and commercial projects with over 10 years of expertise across Colombia. |
-| About | `About.tsx` | About Us \| Future Land Capital | Learn about Future Land Capital's mission, values, and the team behind Colombia's top construction projects. Led by founder Sofía Alejandra Bermúdez Llanos. |
-| Services | `Services.tsx` | Our Services \| Future Land Capital | Explore Future Land Capital's full range of construction services — from custom luxury homes and commercial development to sustainable green building in Bogotá, Colombia. |
-| Projects | `Projects.tsx` | Projects \| Future Land Capital | Browse Future Land Capital's portfolio of completed residential and commercial construction projects across Colombia. Quality craftsmanship at every scale. |
-| Contact | `Contact.tsx` | Contact Us \| Future Land Capital | Get in touch with Future Land Capital. Reach our team in Bogotá, Colombia for project inquiries, consultations, and construction quotes. |
-| Not Found | `NotFound.tsx` | Page Not Found \| Future Land Capital | The page you're looking for doesn't exist. Return to Future Land Capital's homepage. |
-
----
+### Files to Create/Modify
+1. **`src/pages/Remodel.tsx`** — New file, entire landing page
+2. **`src/App.tsx`** — Add route: `<Route path="/remodel" element={<Remodel />} />`
 
 ### Technical Details
+- Uses existing dependencies: `framer-motion`, `lucide-react`, `react-router-dom`
+- Uses existing UI components: `Button` from `@/components/ui/button`
+- Uses existing design tokens (gold, forest green, cream backgrounds)
+- Responsive: mobile-first with grid breakpoints at `sm`, `md`, `lg`
+- All CTA buttons will link to `/contact` (or anchor-scroll to a form if preferred)
+- Unsplash images for hero, expertise cards, and before/after section
 
-- The hook will use `document.querySelector` to find existing meta tags and update their `content` attribute — no new tags are created if the tags already exist in `index.html`
-- Tags are identified by their `name` or `property` attribute selectors (e.g., `meta[name="description"]`, `meta[property="og:title"]`)
-- `useDocumentTitle.ts` is kept but updated internally to use the new logic, so no imports break
-- All updates run client-side on route change (standard for SPAs)
-
-### Files Modified
-1. `src/hooks/useDocumentTitle.ts` — upgraded to also update meta description + OG/Twitter tags (accepts `{ title, description }`)
-2. `src/pages/Index.tsx` — call hook with title + description
-3. `src/pages/About.tsx` — call hook with title + description
-4. `src/pages/Services.tsx` — call hook with title + description
-5. `src/pages/Projects.tsx` — call hook with title + description
-6. `src/pages/Contact.tsx` — call hook with title + description
-7. `src/pages/NotFound.tsx` — call hook with title + description
