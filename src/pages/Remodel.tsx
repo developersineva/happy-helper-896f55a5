@@ -14,7 +14,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Check,
   ChefHat,
@@ -24,8 +24,6 @@ import {
   Clock,
   CreditCard,
   TrendingUp,
-  Star,
-  DollarSign,
   ArrowRight,
   Send,
 } from "lucide-react";
@@ -48,7 +46,7 @@ const expertise = [
   {
     icon: Bath,
     title: "Bathroom Transformations",
-    desc: "Spa-style finishes, walk-in showers, custom vanities.",
+    desc: "Spa-style finishes, walk-in showers, and custom vanities.",
   },
   {
     icon: Shield,
@@ -62,11 +60,12 @@ const expertise = [
   },
 ];
 
-const trustBadges = [
-  { icon: Shield, label: "Licensed & Insured Florida Contractor" },
-  { icon: Star, label: "5-Star Client Reviews" },
-  { icon: TrendingUp, label: "High-End Craftsmanship" },
-  { icon: DollarSign, label: "Transparent Pricing" },
+const serviceOptions = [
+  "Kitchen Remodelling",
+  "Bathroom Remodelling",
+  "Whole Home Remodelling",
+  "Impact Windows",
+  "Other Services",
 ];
 
 const beforeAfter = [
@@ -85,7 +84,7 @@ const beforeAfter = [
 const Remodel = () => {
   const navigate = useNavigate();
   const [ctaOpen, setCtaOpen] = useState(false);
-  const [ctaForm, setCtaForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [ctaForm, setCtaForm] = useState({ name: "", email: "", phone: "", message: "", services: [] as string[] });
   const [ctaLoading, setCtaLoading] = useState(false);
   const { toast } = useToast();
 
@@ -97,22 +96,27 @@ const Remodel = () => {
 
   const handleCtaSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!ctaForm.name.trim() || !ctaForm.email.trim() || !ctaForm.phone.trim() || !ctaForm.message.trim()) {
+    if (!ctaForm.name.trim() || !ctaForm.email.trim() || !ctaForm.phone.trim()) {
       toast({ title: "Please fill all required fields", variant: "destructive" });
+      return;
+    }
+    if (ctaForm.services.length === 0) {
+      toast({ title: "Please select at least one service", variant: "destructive" });
       return;
     }
     setCtaLoading(true);
     try {
+      const servicesLine = "Services: " + ctaForm.services.join(", ");
       const { error } = await supabase.from("contact_submissions").insert({
         name: ctaForm.name.trim(),
         email: ctaForm.email.trim(),
         phone: ctaForm.phone.trim(),
         project_type: "Remodel",
-        message: ctaForm.message.trim(),
+        message: servicesLine,
       });
       if (error) throw error;
       toast({ title: "Request sent!", description: "We'll get back to you soon." });
-      setCtaForm({ name: "", email: "", phone: "", message: "" });
+      setCtaForm({ name: "", email: "", phone: "", message: "", services: [] });
       setCtaOpen(false);
       setTimeout(() => navigate("/thank-you"), 2000);
     } catch {
@@ -136,7 +140,7 @@ const Remodel = () => {
           <div className="absolute inset-0 bg-black/65" />
         </div>
 
-        <div className="relative z-10 container mx-auto px-4 py-20 text-center max-w-3xl">
+        <div className="relative z-10 container mx-auto px-4 pt-12 pb-20 text-center max-w-3xl">
           <motion.img
             src={futureLandLogo}
             alt="Future Land Capital"
@@ -151,9 +155,10 @@ const Remodel = () => {
             initial="hidden"
             animate="visible"
             custom={1}
-            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-4"
+            className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-4"
           >
-            Remodel Your Home Today.{" "}
+            Remodel Your Home Today.
+            <br />
             <span className="text-secondary">Pay After 90&nbsp;Days*</span>
           </motion.h1>
 
@@ -164,8 +169,8 @@ const Remodel = () => {
             custom={3}
             className="text-white/80 text-lg md:text-xl mb-8"
           >
-            Luxury kitchen, bathroom &amp; impact window remodeling
-            <br className="hidden sm:block" /> for qualified South Florida homeowners.
+            Luxury Kitchen, Bathroom &amp; Impact Window Remodeling
+            <br className="hidden sm:block" /> for Qualified South Florida Homeowners.
           </motion.p>
 
           <motion.ul
@@ -223,7 +228,7 @@ const Remodel = () => {
             custom={1}
             className="text-muted-foreground text-lg leading-relaxed space-y-4"
           >
-            <p>In South Florida, your home is more than property — it's your statement.</p>
+            <p>In South Florida, your home is more than property — it&apos;s a statement.</p>
             <p>Outdated kitchens. Aging bathrooms. Weak windows before hurricane season.</p>
             <p>Delaying upgrades only increases costs.</p>
             <p>
@@ -325,8 +330,9 @@ const Remodel = () => {
             custom={1}
             className="text-primary-foreground/80 text-lg mb-10"
           >
-            Remodeling doesn't require draining your savings. We offer structured
-            financing options including:
+            Remodeling doesn&apos;t require draining your savings.
+            <br />
+            We offer structured financing options, including:
           </motion.p>
 
           <motion.ul
@@ -357,42 +363,8 @@ const Remodel = () => {
             Check If I Qualify
           </Button>
           <p className="text-primary-foreground/50 text-xs">
-            Financing subject to credit approval. Terms vary.
+            Financing subject to credit approval. Terms may vary.
           </p>
-        </div>
-      </section>
-
-      {/* ── TRUST ── */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="font-display text-3xl md:text-4xl text-center mb-14"
-          >
-            Trusted Across South Florida
-          </motion.h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {trustBadges.map((b, i) => (
-              <motion.div
-                key={b.label}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={i}
-                className="flex items-center gap-3 bg-card rounded-xl p-6 shadow-md"
-              >
-                <div className="shrink-0 w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center">
-                  <b.icon className="w-5 h-5 text-secondary" />
-                </div>
-                <span className="font-medium">{b.label}</span>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -460,21 +432,26 @@ const Remodel = () => {
         </div>
       </section>
 
-      {/* ── FINAL CTA STRIP ── */}
-      <section className="bg-primary text-primary-foreground py-8">
-        <div className="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-center sm:text-left">
-            <p className="font-display text-xl">Future Land Capital</p>
+      {/* ── FOOTER ── */}
+      <footer className="bg-primary text-primary-foreground border-t border-primary-foreground/10">
+        <div className="container mx-auto px-4 py-10 md:py-12">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 max-w-5xl mx-auto">
+            <div className="text-center sm:text-left">
+              <p className="font-display text-xl md:text-2xl font-semibold">Future Land Capital</p>
+              <p className="text-primary-foreground/70 text-sm mt-1">Sustainable Luxury Living</p>
+            </div>
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <Button
+                size="lg"
+                className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-8 font-medium shadow-md hover:shadow-lg transition-shadow"
+                onClick={() => setCtaOpen(true)}
+              >
+                Book Your Free Consultation
+              </Button>
+            </div>
           </div>
-          <Button
-            size="lg"
-            className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-8"
-            onClick={() => setCtaOpen(true)}
-          >
-            Book Your Free Consultation
-          </Button>
         </div>
-      </section>
+      </footer>
 
       {/* ── CTA POPUP ── */}
       <Dialog open={ctaOpen} onOpenChange={setCtaOpen}>
@@ -516,14 +493,24 @@ const Remodel = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1.5">Message *</label>
-              <Textarea
-                value={ctaForm.message}
-                onChange={(e) => setCtaForm({ ...ctaForm, message: e.target.value })}
-                placeholder="Tell us about your remodel..."
-                rows={4}
-                required
-              />
+              <label className="block text-sm font-medium mb-1.5">Which Services are you looking for? *</label>
+              <div className="mt-2 space-y-2">
+                {serviceOptions.map((option) => (
+                  <label key={option} className="flex items-center gap-2 cursor-pointer">
+                    <Checkbox
+                      checked={ctaForm.services.includes(option)}
+                      onCheckedChange={(checked) => {
+                        if (checked) {
+                          setCtaForm({ ...ctaForm, services: [...ctaForm.services, option] });
+                        } else {
+                          setCtaForm({ ...ctaForm, services: ctaForm.services.filter((s) => s !== option) });
+                        }
+                      }}
+                    />
+                    <span className="text-sm">{option}</span>
+                  </label>
+                ))}
+              </div>
             </div>
             <Button type="submit" disabled={ctaLoading} size="lg" className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground">
               {ctaLoading ? "Sending..." : "Submit"}
