@@ -26,7 +26,6 @@ import {
   TrendingUp,
   Star,
   DollarSign,
-  Phone,
   ArrowRight,
   Send,
 } from "lucide-react";
@@ -466,9 +465,6 @@ const Remodel = () => {
         <div className="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-center sm:text-left">
             <p className="font-display text-xl">Future Land Capital</p>
-            <a href="tel:+13055551234" className="flex items-center gap-2 text-secondary text-sm mt-1 justify-center sm:justify-start">
-              <Phone className="w-4 h-4" /> (305) 555-1234
-            </a>
           </div>
           <Button
             size="lg"
