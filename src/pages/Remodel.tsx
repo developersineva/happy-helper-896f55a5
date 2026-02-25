@@ -106,14 +106,14 @@ const Remodel = () => {
     }
     setCtaLoading(true);
     try {
-      const servicesLine = "Services: " + ctaForm.services.join(", ");
       const { error } = await supabase.from("contact_submissions").insert({
         name: ctaForm.name.trim(),
         email: ctaForm.email.trim(),
         phone: ctaForm.phone.trim(),
         project_type: "Remodel",
-        message: servicesLine,
-      });
+        message: ctaForm.services.join(", "),
+        services: ctaForm.services,
+      } as any);
       if (error) throw error;
       toast({ title: "Request sent!", description: "We'll get back to you soon." });
       setCtaForm({ name: "", email: "", phone: "", message: "", services: [] });
