@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
+import futureLandLogo from "@/assets/Future_Land_Logo.png";
 import {
   Check,
   ChefHat,
@@ -91,11 +92,20 @@ const Remodel = () => {
         </div>
 
         <div className="relative z-10 container mx-auto px-4 py-20 text-center max-w-3xl">
-          <motion.h1
+          <motion.img
+            src={futureLandLogo}
+            alt="Future Land Capital"
+            className="h-24 md:h-32 mx-auto mb-8"
             variants={fadeUp}
             initial="hidden"
             animate="visible"
             custom={0}
+          />
+          <motion.h1
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            custom={1}
             className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-4"
           >
             Remodel Your Home Today.{" "}
@@ -106,7 +116,7 @@ const Remodel = () => {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            custom={1}
+            custom={3}
             className="text-white/80 text-lg md:text-xl mb-8"
           >
             Luxury kitchen, bathroom &amp; impact window remodeling
@@ -132,7 +142,7 @@ const Remodel = () => {
             ))}
           </motion.ul>
 
-          <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={3}>
+          <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={4}>
             <Button
               asChild
               size="lg"
