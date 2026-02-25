@@ -227,8 +227,17 @@ const Remodel = () => {
       </section>
 
       {/* ── FINANCING ── */}
-      <section className="py-20 md:py-28 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 max-w-3xl text-center">
+      <section className="relative py-20 md:py-28 text-primary-foreground overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80')",
+          }}
+        >
+          <div className="absolute inset-0 bg-primary/85" />
+        </div>
+        <div className="relative z-10 container mx-auto px-4 max-w-3xl text-center">
           <motion.h2
             variants={fadeUp}
             initial="hidden"
