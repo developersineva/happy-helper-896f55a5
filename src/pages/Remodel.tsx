@@ -1,8 +1,20 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
-import futureLandLogo from "@/assets/Future_Land_Logo.png";
+import { useToast } from "@/hooks/use-toast";
+import futureLandLogo from "@/assets/Future_Land_Logo.svg";
+import { supabase } from "@/integrations/supabase/client";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Check,
   ChefHat,
@@ -16,6 +28,7 @@ import {
   DollarSign,
   Phone,
   ArrowRight,
+  Send,
 } from "lucide-react";
 
 const fadeUp = {
@@ -71,11 +84,44 @@ const beforeAfter = [
 ];
 
 const Remodel = () => {
+  const navigate = useNavigate();
+  const [ctaOpen, setCtaOpen] = useState(false);
+  const [ctaForm, setCtaForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [ctaLoading, setCtaLoading] = useState(false);
+  const { toast } = useToast();
+
   useDocumentTitle({
     title: "Remodel Your Home | Future Land Capital",
     description:
       "Luxury kitchen, bathroom & impact window remodeling for South Florida homeowners. Flexible financing with 90-day payment deferral available.",
   });
+
+  const handleCtaSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!ctaForm.name.trim() || !ctaForm.email.trim() || !ctaForm.phone.trim() || !ctaForm.message.trim()) {
+      toast({ title: "Please fill all required fields", variant: "destructive" });
+      return;
+    }
+    setCtaLoading(true);
+    try {
+      const { error } = await supabase.from("contact_submissions").insert({
+        name: ctaForm.name.trim(),
+        email: ctaForm.email.trim(),
+        phone: ctaForm.phone.trim(),
+        project_type: "Remodel",
+        message: ctaForm.message.trim(),
+      });
+      if (error) throw error;
+      toast({ title: "Request sent!", description: "We'll get back to you soon." });
+      setCtaForm({ name: "", email: "", phone: "", message: "" });
+      setCtaOpen(false);
+      setTimeout(() => navigate("/thank-you"), 2000);
+    } catch {
+      toast({ title: "Error", description: "Failed to submit. Please try again.", variant: "destructive" });
+    } finally {
+      setCtaLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -144,14 +190,12 @@ const Remodel = () => {
 
           <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={4}>
             <Button
-              asChild
               size="lg"
               className="bg-secondary hover:bg-secondary/90 text-secondary-foreground text-base px-8 mb-3"
+              onClick={() => setCtaOpen(true)}
             >
-              <Link to="/contact">
-                Book Your Free Design Consultation
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+              Book Your Free Design Consultation
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             <p className="text-white/50 text-xs mt-3">
               Financing subject to approval. Projects starting at $20,000+.
@@ -187,6 +231,23 @@ const Remodel = () => {
               We help qualified homeowners remodel now — with structured financing that
               protects your liquidity.
             </p>
+          </motion.div>
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={2}
+            className="flex justify-center mt-10"
+          >
+            <Button
+              size="lg"
+              className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-8"
+              onClick={() => setCtaOpen(true)}
+            >
+              Start Your Remodel
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
           </motion.div>
         </div>
       </section>
@@ -226,11 +287,11 @@ const Remodel = () => {
 
           <div className="text-center">
             <Button
-              asChild
               size="lg"
               className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-8"
+              onClick={() => setCtaOpen(true)}
             >
-              <Link to="/contact">Request My Free Estimate</Link>
+              Request My Free Estimate
             </Button>
           </div>
         </div>
@@ -290,11 +351,11 @@ const Remodel = () => {
           </motion.ul>
 
           <Button
-            asChild
             size="lg"
             className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-8 mb-4"
+            onClick={() => setCtaOpen(true)}
           >
-            <Link to="/contact">Check If I Qualify</Link>
+            Check If I Qualify
           </Button>
           <p className="text-primary-foreground/50 text-xs">
             Financing subject to credit approval. Terms vary.
@@ -390,11 +451,11 @@ const Remodel = () => {
 
           <div className="text-center">
             <Button
-              asChild
               size="lg"
               className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-8"
+              onClick={() => setCtaOpen(true)}
             >
-              <Link to="/contact">Start My Remodel</Link>
+              Start My Remodel
             </Button>
           </div>
         </div>
@@ -410,14 +471,71 @@ const Remodel = () => {
             </a>
           </div>
           <Button
-            asChild
             size="lg"
             className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-8"
+            onClick={() => setCtaOpen(true)}
           >
-            <Link to="/contact">Book Your Free Consultation</Link>
+            Book Your Free Consultation
           </Button>
         </div>
       </section>
+
+      {/* ── CTA POPUP ── */}
+      <Dialog open={ctaOpen} onOpenChange={setCtaOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Get Your Free Consultation</DialogTitle>
+            <DialogDescription>
+              Fill in your details and we&apos;ll get back to you shortly.
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleCtaSubmit} className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium mb-1.5">Name *</label>
+              <Input
+                value={ctaForm.name}
+                onChange={(e) => setCtaForm({ ...ctaForm, name: e.target.value })}
+                placeholder="Your name"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-1.5">Email *</label>
+              <Input
+                type="email"
+                value={ctaForm.email}
+                onChange={(e) => setCtaForm({ ...ctaForm, email: e.target.value })}
+                placeholder="your@email.com"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-1.5">Phone Number *</label>
+              <Input
+                type="tel"
+                value={ctaForm.phone}
+                onChange={(e) => setCtaForm({ ...ctaForm, phone: e.target.value })}
+                placeholder="(555) 123-4567"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-1.5">Message *</label>
+              <Textarea
+                value={ctaForm.message}
+                onChange={(e) => setCtaForm({ ...ctaForm, message: e.target.value })}
+                placeholder="Tell us about your remodel..."
+                rows={4}
+                required
+              />
+            </div>
+            <Button type="submit" disabled={ctaLoading} size="lg" className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground">
+              {ctaLoading ? "Sending..." : "Submit"}
+              <Send className="ml-2 h-5 w-5" />
+            </Button>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
