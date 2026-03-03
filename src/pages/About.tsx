@@ -38,7 +38,7 @@ const missionVision = [
     icon: Eye,
     title: "Our Vision",
     description:
-      "To be Colombia's most trusted construction company, known for innovation, integrity, and lasting relationships.",
+      "To be Florida's most trusted construction company, known for innovation, integrity, and lasting relationships.",
   },
 ];
 
@@ -60,7 +60,7 @@ const team = [
   {
     name: "Sofía Alejandra Bermúdez Llanos",
     role: "Founder & Manager",
-    bio: "Sofía Alejandra Bermúdez Llanos is a goal-oriented executive with over 10 years of experience in the construction industry. As the Manager of Berdez S.A.S. in Bogotá, Colombia, she specializes in leading high-performance teams to deliver exceptional construction projects. A graduate of The Australian National University, Sofía combines international education with local expertise to drive organizational success in Colombia's competitive construction market.",
+    bio: "Sofía Alejandra Bermúdez Llanos is a goal-oriented executive with over 10 years of experience in the construction industry. As the Manager of Future Land Capital in South Florida, she specializes in leading high-performance teams to deliver exceptional construction projects. A graduate of The Australian National University, Sofía combines international education with local expertise to drive organizational success in Florida's competitive construction market.",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400",
   },
 ];
@@ -75,12 +75,12 @@ const achievements = [
 const certifications = [
   { name: "LEED Certified", color: "bg-green-600" },
   { name: "ISO 9001", color: "bg-blue-600" },
-  { name: "Colombian Licensed Builder", color: "bg-[#A67C52]" },
-  { name: "S.A.S. Registered", color: "bg-blue-700" },
+  { name: "Florida Licensed Builder", color: "bg-[#A67C52]" },
+  { name: "LLC Registered", color: "bg-blue-700" },
 ];
 
 const About = () => {
-  useDocumentTitle({ title: "About Us | Future Land Capital", description: "Learn about Future Land Capital's mission, values, and the team behind Colombia's top construction projects. Led by founder Sofía Alejandra Bermúdez Llanos." });
+  useDocumentTitle({ title: "About Us | Future Land Capital", description: "Learn about Future Land Capital's mission, values, and the team behind Florida's top construction projects. Led by founder Sofía Alejandra Bermúdez Llanos." });
   
   return (
     <Layout>
@@ -115,7 +115,7 @@ const About = () => {
             transition={{ delay: 0.1 }}
             className="font-display text-5xl md:text-6xl text-white mb-4"
           >
-            About Berdez S.A.S.
+            About Future Land Capital
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -123,7 +123,7 @@ const About = () => {
             transition={{ delay: 0.2 }}
             className="text-white/80 text-xl max-w-2xl"
           >
-            Building Excellence in Bogotá, Colombia
+            Building Excellence in South Florida
           </motion.p>
         </div>
       </section>
@@ -151,10 +151,10 @@ const About = () => {
               <h2 className="font-display text-4xl text-[#333333] mb-6">Our Story</h2>
               <div className="w-16 h-1 bg-[#A67C52] mb-6" />
               <p className="text-[#333333]/80 text-lg leading-relaxed">
-                Berdez S.A.S. (Bermudez Construction SAS) has established itself as a leading construction company in
-                Bogotá, Colombia. Under the leadership of Sofía Alejandra Bermúdez Llanos, our company has grown into
-                one of Colombia's most respected construction firms, known for our commitment to quality, innovation,
-                and client satisfaction. As a Sociedad por Acciones Simplificada (S.A.S.), we bring over a decade of
+                Future Land Capital has established itself as a leading construction company in
+                South Florida. Under the leadership of Sofía Alejandra Bermúdez Llanos, our company has grown into
+                one of Florida's most respected construction firms, known for our commitment to quality, innovation,
+                and client satisfaction. We bring over a decade of
                 executive-level experience in both residential and commercial construction.
               </p>
             </motion.div>
@@ -301,7 +301,7 @@ const About = () => {
 
               {/* Bio */}
               <p className="text-[#333333]/80 leading-relaxed mb-8">
-                Sofía Alejandra Bermúdez Llanos is a goal-oriented executive with over 10 years of experience in the construction industry. As the Manager of Berdez S.A.S. in Bogotá, Colombia, she specializes in leading high-performance teams to deliver exceptional construction projects. A graduate of The Australian National University, Sofía combines international education with local expertise to drive organizational success in Colombia's competitive construction market.
+                Sofía Alejandra Bermúdez Llanos is a goal-oriented executive with over 10 years of experience in the construction industry. As the Manager of Future Land Capital in South Florida, she specializes in leading high-performance teams to deliver exceptional construction projects. A graduate of The Australian National University, Sofía combines international education with local expertise to drive organizational success in Florida's competitive construction market.
               </p>
 
               {/* Education & Location with Icons */}
@@ -315,7 +315,7 @@ const About = () => {
                 <div className="flex items-center gap-3">
                   <Building className="w-5 h-5 text-[#A67C52] flex-shrink-0" />
                   <span className="text-[#333333]/70">
-                    <span className="font-medium text-[#333333]">Location:</span> Bogotá, Distrito Capital, Colombia
+                    <span className="font-medium text-[#333333]">Location:</span> Fort Lauderdale, Florida
                   </span>
                 </div>
               </div>

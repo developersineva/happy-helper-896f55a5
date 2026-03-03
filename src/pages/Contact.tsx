@@ -25,7 +25,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", projectType: "", message: "" });
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
-  useDocumentTitle({ title: "Contact Us | Future Land Capital", description: "Get in touch with Future Land Capital. Reach our team in Bogotá, Colombia for project inquiries, consultations, and construction quotes." });
+  useDocumentTitle({ title: "Contact Us | Future Land Capital", description: "Get in touch with Future Land Capital. Reach our team in South Florida for project inquiries, consultations, and construction quotes." });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
