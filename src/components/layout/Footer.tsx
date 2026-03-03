@@ -108,7 +108,7 @@ export const Footer = () => {
               <img src={futureLandLogo} alt="Future Land Capital" className="h-[80px] w-auto" />
             </div>
             <p className="text-charcoal/80 text-sm leading-relaxed mb-6">
-              Building tomorrow's legacy today. Texas' premier sustainable luxury construction company, creating
+              Building tomorrow's legacy today. Florida's premier sustainable luxury construction company, creating
               exceptional spaces for discerning clients.
             </p>
             <div className="flex gap-4">

@@ -87,7 +87,7 @@ const whyChooseUs = [
   { 
     icon: Calendar, 
     title: "25+ Years Experience", 
-    description: "Decades of proven excellence in Texas construction" 
+    description: "Decades of proven excellence in Florida construction" 
   },
   { 
     icon: Shield, 
@@ -107,7 +107,7 @@ const whyChooseUs = [
 ];
 
 const Services = () => {
-  useDocumentTitle({ title: "Our Services | Future Land Capital", description: "Explore Future Land Capital's full range of construction services — from custom luxury homes and commercial development to sustainable green building in Bogotá, Colombia." });
+  useDocumentTitle({ title: "Our Services | Future Land Capital", description: "Explore Future Land Capital's full range of construction services — from custom luxury homes and commercial development to sustainable green building in South Florida." });
   
   return (
     <Layout>

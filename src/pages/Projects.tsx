@@ -15,13 +15,13 @@ import {
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 const projects = [
-  { id: 1, title: "The Oaks Estate", location: "River Oaks, Houston", category: "Residential", value: "$8.5M", image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800", description: "A stunning 12,000 sq ft estate featuring sustainable materials and smart home technology." },
-  { id: 2, title: "Skyline Tower", location: "Downtown Dallas", category: "Commercial", value: "$45M", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800", description: "40-story LEED Platinum certified office building with panoramic city views." },
-  { id: 3, title: "Verde Residence", location: "Austin Hills", category: "Sustainable", value: "$5.2M", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800", description: "Net-zero energy home with solar panels, geothermal heating, and rainwater harvesting." },
-  { id: 4, title: "Lakeside Manor", location: "Lake Travis", category: "Residential", value: "$12M", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800", description: "Waterfront luxury estate with private dock and infinity pool overlooking the lake." },
-  { id: 5, title: "Innovation Hub", location: "The Woodlands", category: "Commercial", value: "$28M", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800", description: "Modern tech campus with collaborative spaces and green building features." },
-  { id: 6, title: "Eco Villa", location: "San Antonio", category: "Sustainable", value: "$3.8M", image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800", description: "Award-winning sustainable home built with reclaimed materials and passive solar design." },
-  { id: 7, title: "Highland Retreat", location: "Hill Country", category: "Residential", value: "$7.2M", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800", description: "Contemporary ranch home blending modern design with Texas Hill Country aesthetics." },
+  { id: 1, title: "The Oaks Estate", location: "Fort Lauderdale", category: "Residential", value: "$8.5M", image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800", description: "A stunning 12,000 sq ft estate featuring sustainable materials and smart home technology." },
+  { id: 2, title: "Skyline Tower", location: "Downtown Miami", category: "Commercial", value: "$45M", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800", description: "40-story LEED Platinum certified office building with panoramic city views." },
+  { id: 3, title: "Verde Residence", location: "Coral Gables", category: "Sustainable", value: "$5.2M", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800", description: "Net-zero energy home with solar panels, geothermal heating, and rainwater harvesting." },
+  { id: 4, title: "Lakeside Manor", location: "Palm Beach", category: "Residential", value: "$12M", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800", description: "Waterfront luxury estate with private dock and infinity pool overlooking the lake." },
+  { id: 5, title: "Innovation Hub", location: "Boca Raton", category: "Commercial", value: "$28M", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800", description: "Modern tech campus with collaborative spaces and green building features." },
+  { id: 6, title: "Eco Villa", location: "Naples", category: "Sustainable", value: "$3.8M", image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800", description: "Award-winning sustainable home built with reclaimed materials and passive solar design." },
+  { id: 7, title: "Highland Retreat", location: "Jupiter", category: "Residential", value: "$7.2M", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800", description: "Contemporary ranch home blending modern design with South Florida coastal aesthetics." },
 ];
 
 const categories = ["All", "Residential", "Commercial", "Sustainable"];
@@ -29,7 +29,7 @@ const categories = ["All", "Residential", "Commercial", "Sustainable"];
 const Projects = () => {
   const [filter, setFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
-  useDocumentTitle({ title: "Projects | Future Land Capital", description: "Browse Future Land Capital's portfolio of completed residential and commercial construction projects across Colombia. Quality craftsmanship at every scale." });
+  useDocumentTitle({ title: "Projects | Future Land Capital", description: "Browse Future Land Capital's portfolio of completed residential and commercial construction projects across Florida. Quality craftsmanship at every scale." });
 
   const filtered = filter === "All" ? projects : projects.filter((p) => p.category === filter);
 
