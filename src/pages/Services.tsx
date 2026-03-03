@@ -327,7 +327,7 @@ const Services = () => {
                 asChild 
                 size="lg" 
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-[#2D5A3D] px-8 py-6 text-lg"
+                className="border-white bg-transparent text-white hover:bg-white hover:text-[#2D5A3D] px-8 py-6 text-lg"
               >
                 <Link to="/projects">
                   View Our Projects
