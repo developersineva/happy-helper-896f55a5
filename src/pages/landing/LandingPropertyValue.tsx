@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Check, ArrowRight, Send, Compass, DollarSign, BarChart3, Map } from "lucide-react";
+import { Check, ArrowRight, Send } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -30,34 +30,11 @@ const serviceOptions = [
   "Kitchen Remodelling",
   "Bathroom Remodelling",
   "Whole Home Remodelling",
-  "Impact Windows",
+  "Interior Redesign",
   "Other Services",
 ];
 
-const solutionCards = [
-  {
-    icon: Compass,
-    title: "Design Opportunities",
-    desc: "Identify layout improvements and design upgrades that elevate the overall space.",
-  },
-  {
-    icon: DollarSign,
-    title: "Investment Estimate",
-    desc: "Understand the approximate investment range required for your renovation goals.",
-  },
-  {
-    icon: BarChart3,
-    title: "Value Optimization",
-    desc: "Discover which renovations can significantly increase property value or rental income.",
-  },
-  {
-    icon: Map,
-    title: "Project Roadmap",
-    desc: "Receive a clear next-step strategy for turning your vision into reality.",
-  },
-];
-
-const FreeAssessment = () => {
+const LandingPropertyValue = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -70,9 +47,9 @@ const FreeAssessment = () => {
   const { toast } = useToast();
 
   useDocumentTitle({
-    title: "Free Luxury Renovation Design Assessment | Future Land Capital",
+    title: "Property Value Increase | Before Selling | Future Land Capital",
     description:
-      "Book your complimentary renovation design assessment. Custom renovation ideas, investment estimates, and property value insights for South Florida & Orlando homeowners.",
+      "Increase your property value before selling. Targeted renovations for resale. Request a Property Value Renovation Plan from Future Land Capital.",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -92,7 +69,7 @@ const FreeAssessment = () => {
         name: formData.name.trim(),
         email: formData.email.trim(),
         phone: formData.phone.trim(),
-        project_type: "Free Assessment",
+        project_type: "Property Value Increase",
         message,
       });
       if (error) throw error;
@@ -110,14 +87,14 @@ const FreeAssessment = () => {
   const openFormPopup = () => setFormPopupOpen(true);
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white">
-      {/* HERO */}
+    <div className="landing-page min-h-screen bg-zinc-950 text-white">
+      {/* HERO — same structure as Free Assessment */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-zinc-900 py-20">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=80')",
+              "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80')",
           }}
         />
         <div className="absolute inset-0 bg-[rgb(24_24_27/92%)]" />
@@ -131,24 +108,15 @@ const FreeAssessment = () => {
             animate="visible"
             custom={0}
           />
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={0.5}
-            className="text-amber-400/90 text-sm md:text-base uppercase tracking-widest mb-4"
-          >
-            FREE LUXURY RENOVATION DESIGN ASSESSMENT
-          </motion.p>
           <motion.h1
             variants={fadeUp}
             initial="hidden"
             animate="visible"
             custom={1}
-            className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-6"
+            className="font-display font-bold text-[2.5rem] sm:text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-6"
           >
-            Transform Your Property Into a Space That Reflects{" "}
-            <span className="text-amber-400">Luxury, Comfort &amp; Value</span>
+            Increase Your Property Value{" "}
+            <span style={{ color: "#a67a54" }}>Before Selling</span>
           </motion.h1>
           <motion.p
             variants={fadeUp}
@@ -157,53 +125,43 @@ const FreeAssessment = () => {
             custom={1.2}
             className="text-zinc-300 text-lg md:text-xl mb-4 max-w-3xl mx-auto leading-relaxed"
           >
-            Future Land Capital helps homeowners, Airbnb hosts, and real estate investors across
-            South Florida and Orlando redesign their properties through strategic renovations that
-            enhance lifestyle and property value.
+            Many homeowners leave thousands of dollars on the table by selling properties that
+            haven&apos;t been strategically upgraded.
           </motion.p>
           <motion.p
             variants={fadeUp}
             initial="hidden"
             animate="visible"
             custom={1.4}
-            className="text-zinc-400 text-base md:text-lg mb-8 max-w-2xl mx-auto"
+            className="text-zinc-400 text-base md:text-lg mb-4 max-w-2xl mx-auto"
           >
-            For a limited time, we&apos;re offering a complimentary renovation design assessment
-            where our experts review your property and suggest the best upgrades based on your goals.
+            Future Land Capital helps property owners implement targeted renovations that increase
+            resale value and buyer appeal.
           </motion.p>
-          <motion.ul
+          <motion.p
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            custom={1.6}
-            className="flex flex-col items-center gap-3 mb-10 text-zinc-200"
+            custom={1.5}
+            className="text-zinc-400 text-base md:text-lg mb-10 max-w-2xl mx-auto"
           >
-            {[
-              "Custom renovation ideas tailored to your property",
-              "Estimated renovation investment range",
-              "Property value improvement insights",
-              "Airbnb performance optimization strategies",
-            ].map((t) => (
-              <li key={t} className="flex items-center gap-2 text-sm md:text-base">
-                <Check className="w-5 h-5 text-amber-400 shrink-0" />
-                <span>{t}</span>
-              </li>
-            ))}
-          </motion.ul>
+            Request a Property Value Renovation Plan today.
+          </motion.p>
           <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={2}>
             <Button
               size="lg"
-              className="bg-amber-500 hover:bg-amber-600 text-zinc-900 text-base md:text-lg px-8 py-6 font-semibold shadow-lg"
+              className="text-white text-base md:text-lg px-8 py-6 font-semibold shadow-lg hover:opacity-95"
+              style={{ backgroundColor: "#a67a54" }}
               onClick={openFormPopup}
             >
-              Book Your Consultation
+              Request Renovation Plan
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </motion.div>
         </div>
       </section>
 
-      {/* PAIN POINT */}
+      {/* PROBLEM */}
       <section className="py-20 md:py-28 bg-zinc-950 border-t border-zinc-800">
         <div className="container mx-auto px-4 max-w-3xl text-center">
           <motion.h2
@@ -213,35 +171,19 @@ const FreeAssessment = () => {
             viewport={{ once: true }}
             className="font-display text-3xl md:text-5xl font-bold text-white mb-6"
           >
-            Renovating Without The Right Plan Can Be{" "}
-            <span className="text-amber-400">Expensive</span>
+            Homes that haven&apos;t been upgraded often face:
           </motion.h2>
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={0.3}
-            className="text-zinc-400 text-lg mb-8"
-          >
-            Many homeowners delay renovations because they don&apos;t know:
-          </motion.p>
           <motion.ul
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            custom={0.5}
-            className="space-y-3 text-left max-w-xl mx-auto mb-8 text-zinc-300"
+            custom={0.3}
+            className="space-y-3 max-w-xl mx-auto mb-6 text-zinc-300 flex flex-col items-center"
           >
-            {[
-              "Where to begin",
-              "Which upgrades actually increase property value",
-              "How much the project will realistically cost",
-              "Whether the renovation will deliver the return they expect",
-            ].map((item, i) => (
-              <li key={i} className="flex items-start gap-3">
-                <span className="w-2 h-2 rounded-full bg-amber-400 mt-2 shrink-0" />
+            {["lower buyer interest", "reduced offers", "longer time on the market"].map((item, i) => (
+              <li key={i} className="flex items-center gap-3 justify-center">
+                <span className="w-2 h-2 rounded-full mt-2 shrink-0" style={{ backgroundColor: "#a67a54" }} />
                 <span>{item}</span>
               </li>
             ))}
@@ -251,27 +193,16 @@ const FreeAssessment = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            custom={0.8}
-            className="text-zinc-400 text-base md:text-lg mb-6"
+            custom={0.5}
+            className="text-zinc-400 text-lg mb-10"
           >
-            Without expert planning, renovations often lead to overspending, design mistakes, and
-            poor ROI.
+            Small, strategic upgrades can dramatically improve both buyer perception and market value.
           </motion.p>
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={1}
-            className="text-white font-medium text-base md:text-lg"
-          >
-            That&apos;s why our team begins every project with a strategic design assessment,
-            ensuring your renovation decisions are guided by experience, not guesswork.
-          </motion.p>
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={1.2} className="mt-10 flex justify-center">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0.7} className="flex justify-center">
             <Button
               size="lg"
-              className="bg-amber-500 hover:bg-amber-600 text-zinc-900 px-8 py-6 text-base md:text-lg font-semibold shadow-lg"
+              className="text-white px-8 py-6 text-base md:text-lg font-semibold shadow-lg hover:opacity-95"
+              style={{ backgroundColor: "#a67a54" }}
               onClick={openFormPopup}
             >
               Book Your Consultation
@@ -283,108 +214,38 @@ const FreeAssessment = () => {
 
       {/* SOLUTION */}
       <section className="py-20 md:py-28 bg-zinc-900">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="font-display text-3xl md:text-5xl font-bold text-center text-white mb-4"
-          >
-            How Our Renovation Assessment Works
-          </motion.h2>
+        <div className="container mx-auto px-4 max-w-3xl text-center">
           <motion.p
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            custom={0.3}
-            className="text-zinc-400 text-lg text-center mb-14 max-w-2xl mx-auto"
+            className="text-zinc-300 text-lg md:text-xl mb-6"
           >
-            During your consultation, our team will review your property and discuss:
+            Our renovation experts analyze your property to determine which upgrades will deliver the strongest return.
           </motion.p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {solutionCards.map((card, i) => (
-              <motion.div
-                key={card.title}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={i * 0.15}
-                className="bg-zinc-950 border border-zinc-800 rounded-xl p-8 text-center"
-              >
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-amber-500/10 mb-5">
-                  <card.icon className="w-7 h-7 text-amber-400" />
-                </div>
-                <h3 className="font-display text-xl font-semibold text-white mb-3">{card.title}</h3>
-                <p className="text-zinc-400 text-sm leading-relaxed">{card.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0.8} className="mt-12 flex justify-center">
-            <Button
-              size="lg"
-              className="bg-amber-500 hover:bg-amber-600 text-zinc-900 px-8 py-6 text-base md:text-lg font-semibold shadow-lg"
-              onClick={openFormPopup}
-            >
-              Book Your Consultation
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* FINANCING */}
-      <section className="py-20 md:py-28 bg-zinc-950 border-t border-zinc-800">
-        <div className="container mx-auto px-4 max-w-3xl text-center">
-          <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="font-display text-3xl md:text-5xl font-bold text-white mb-6"
-          >
-            Renovate Today — Start Paying After{" "}
-            <span className="text-amber-400">90 Days</span>
-          </motion.h2>
           <motion.p
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             custom={0.2}
-            className="text-zinc-300 text-base md:text-lg mb-4"
+            className="text-zinc-400 text-base md:text-lg mb-6"
           >
-            We understand that large renovation projects require financial flexibility.
-          </motion.p>
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={0.4}
-            className="text-zinc-400 text-base md:text-lg mb-10"
-          >
-            Future Land Capital now offers a financing option that allows property owners to begin
-            renovations immediately while delaying payments for 90 days.
+            Common high-impact improvements include:
           </motion.p>
           <motion.ul
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            custom={0.6}
-            className="flex flex-col items-center gap-4 mb-10 text-zinc-200 text-lg"
+            custom={0.4}
+            className="space-y-3 max-w-xl mx-auto mb-6 text-zinc-300 flex flex-col items-center"
           >
-            {[
-              "Start your renovation today",
-              "Begin payments after 90 days",
-              "Flexible payment options available",
-            ].map((f) => (
-              <li key={f} className="flex items-center gap-3">
-                <Check className="w-5 h-5 text-amber-400 shrink-0" />
-                <span>{f}</span>
+            {["kitchen modernization", "bathroom upgrades", "interior redesign", "lighting and layout improvements"].map((item, i) => (
+              <li key={i} className="flex items-center gap-3 justify-center">
+                <span className="w-2 h-2 rounded-full mt-2 shrink-0" style={{ backgroundColor: "#a67a54" }} />
+                <span>{item}</span>
               </li>
             ))}
           </motion.ul>
@@ -393,99 +254,16 @@ const FreeAssessment = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            custom={0.8}
-            className="text-zinc-400 text-sm md:text-base"
-          >
-            This allows homeowners and investors to improve their properties without immediate
-            financial pressure.
-          </motion.p>
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={1} className="mt-10 flex justify-center">
-            <Button
-              size="lg"
-              className="bg-amber-500 hover:bg-amber-600 text-zinc-900 px-8 py-6 text-base md:text-lg font-semibold shadow-lg"
-              onClick={openFormPopup}
-            >
-              Book Your Consultation
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* AUTHORITY */}
-      <section className="py-20 md:py-28 bg-zinc-900 border-t border-zinc-800/50">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 text-center"
-          >
-            Why Property Owners Choose{" "}
-            <span className="text-amber-400">Future Land Capital</span>
-          </motion.h2>
-          <div className="w-16 h-0.5 bg-amber-400/60 mx-auto mb-8" aria-hidden />
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={0.2}
-            className="text-zinc-400 text-lg md:text-xl text-center max-w-2xl mx-auto mb-12"
-          >
-            Our team focuses on strategic renovations designed to increase both lifestyle value and
-            financial return.
-          </motion.p>
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={0.3}
-            className="text-white font-semibold text-lg mb-4 text-center"
-          >
-            We specialize in:
-          </motion.p>
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={0.4}
-            className="bg-zinc-950/80 border border-zinc-700/80 rounded-2xl p-6 md:p-8 mb-12 max-w-2xl mx-auto"
-          >
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-              {[
-                "Luxury kitchen remodeling",
-                "Bathroom transformations",
-                "Full property renovations",
-                "Airbnb property upgrades",
-                "Investor renovation projects and flips",
-              ].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-zinc-200">
-                  <Check className="w-5 h-5 text-amber-400 shrink-0" />
-                  <span className="text-sm md:text-base">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
             custom={0.6}
-            className="text-zinc-400 text-base md:text-lg text-center max-w-2xl mx-auto leading-relaxed"
+            className="text-zinc-400 text-base md:text-lg mb-10"
           >
-            With extensive experience working with South Florida and Orlando properties, we
-            understand how to deliver renovations that align with both design trends and market
-            demand.
+            The goal is to create a property that attracts buyers and maximizes value.
           </motion.p>
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0.8} className="mt-10 flex justify-center">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0.8} className="flex justify-center">
             <Button
               size="lg"
-              className="bg-amber-500 hover:bg-amber-600 text-zinc-900 px-8 py-6 text-base md:text-lg font-semibold shadow-lg"
+              className="text-white px-8 py-6 text-base md:text-lg font-semibold shadow-lg hover:opacity-95"
+              style={{ backgroundColor: "#a67a54" }}
               onClick={openFormPopup}
             >
               Book Your Consultation
@@ -495,7 +273,7 @@ const FreeAssessment = () => {
         </div>
       </section>
 
-      {/* FINAL CTA */}
+      {/* CTA */}
       <section className="py-20 md:py-28 bg-zinc-950 border-t border-zinc-800">
         <div className="container mx-auto px-4 max-w-3xl text-center">
           <motion.h2
@@ -505,7 +283,7 @@ const FreeAssessment = () => {
             viewport={{ once: true }}
             className="font-display text-3xl md:text-5xl font-bold text-white mb-6"
           >
-            Start Planning Your Property Transformation
+            See How Much Value Your Property Could Gain
           </motion.h2>
           <motion.p
             variants={fadeUp}
@@ -515,13 +293,13 @@ const FreeAssessment = () => {
             custom={0.2}
             className="text-zinc-400 text-base md:text-lg mb-10"
           >
-            Book your free renovation design assessment and discover how your property can be
-            transformed with the right strategy.
+            Schedule your property renovation consultation.
           </motion.p>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0.4}>
             <Button
               size="lg"
-              className="bg-amber-500 hover:bg-amber-600 text-zinc-900 px-8 py-6 text-base md:text-lg font-semibold shadow-lg"
+              className="text-white px-8 py-6 text-base md:text-lg font-semibold shadow-lg hover:opacity-95"
+              style={{ backgroundColor: "#a67a54" }}
               onClick={openFormPopup}
             >
               Book Your Consultation
@@ -531,16 +309,16 @@ const FreeAssessment = () => {
         </div>
       </section>
 
-      {/* FORM */}
-      <section id="assessment-form" className="py-20 md:py-28 bg-zinc-900 scroll-mt-20 border-t border-zinc-800">
+      {/* FORM SECTION — same as Free Assessment */}
+      <section id="property-value-form" className="py-20 md:py-28 bg-zinc-900 scroll-mt-20 border-t border-zinc-800">
         <div className="container mx-auto px-4">
           <div className="max-w-xl mx-auto">
             <div className="bg-zinc-950 rounded-2xl border border-zinc-700 p-8 md:p-10">
               <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-2 text-center">
-                Book Your Free Design Assessment
+                Book Your Consultation
               </h2>
               <p className="text-zinc-400 text-sm text-center mb-6">
-                Fill in your details and our team will reach out to schedule your complimentary consultation.
+                Request your Property Value Renovation Plan. We&apos;ll reach out to discuss your property and goals.
               </p>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
@@ -591,7 +369,7 @@ const FreeAssessment = () => {
                               setFormData({ ...formData, services: formData.services.filter((s) => s !== option) });
                             }
                           }}
-                          className="border-zinc-600 data-[state=checked]:bg-amber-500 data-[state=checked]:border-amber-500"
+                          className="border-zinc-600 data-[state=checked]:bg-[#a67a54] data-[state=checked]:border-[#a67a54]"
                         />
                         <span className="text-sm">{option}</span>
                       </label>
@@ -602,7 +380,8 @@ const FreeAssessment = () => {
                   type="submit"
                   disabled={loading}
                   size="lg"
-                  className="w-full bg-amber-500 hover:bg-amber-600 text-zinc-900 font-semibold"
+                  className="w-full text-white font-semibold hover:opacity-95"
+                  style={{ backgroundColor: "#a67a54" }}
                 >
                   {loading ? "Sending…" : "Submit Request"}
                   <Send className="ml-2 h-5 w-5" />
@@ -613,7 +392,7 @@ const FreeAssessment = () => {
         </div>
       </section>
 
-      {/* FOOTER — dark charcoal, sienna CTA, green separator */}
+      {/* FOOTER — same as Free Assessment, Property Value color */}
       <footer className="bg-[#1a1a1a] border-t border-zinc-800 py-6">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6 max-w-[1200px]">
           <div className="text-center md:text-left">
@@ -621,22 +400,23 @@ const FreeAssessment = () => {
             <p className="text-zinc-400 text-sm mt-0.5">Sustainable Luxury Living</p>
           </div>
           <Button
-              size="lg"
-              className="bg-amber-500 hover:bg-amber-600 text-zinc-900 font-semibold rounded-lg px-8 py-6 text-base shrink-0"
-              onClick={openFormPopup}
-            >
-              Book Your Consultation
-            </Button>
+            size="lg"
+            className="text-white font-semibold rounded-lg px-8 py-6 text-base shrink-0 hover:opacity-95"
+            style={{ backgroundColor: "#a67a54" }}
+            onClick={openFormPopup}
+          >
+            Book Your Consultation
+          </Button>
         </div>
       </footer>
 
-      {/* FORM POPUP — all CTAs open this */}
+      {/* FORM POPUP — dark like Free Assessment */}
       <Dialog open={formPopupOpen} onOpenChange={setFormPopupOpen}>
-        <DialogContent className="sm:max-w-md bg-zinc-950 border-zinc-700 text-white">
+        <DialogContent className="sm:max-w-md bg-zinc-950 border-zinc-700 text-white max-h-[90vh] overflow-y-auto mx-3 sm:mx-4 my-4 sm:my-0">
           <DialogHeader>
-            <DialogTitle className="text-white">Book Your Free Design Assessment</DialogTitle>
+            <DialogTitle className="text-white text-xl sm:text-2xl font-bold">Book Your Consultation</DialogTitle>
             <DialogDescription className="text-zinc-400">
-              Fill in your details and our team will reach out to schedule your complimentary consultation.
+              Request your Property Value Renovation Plan. We'll reach out to discuss your property and goals.
             </DialogDescription>
           </DialogHeader>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -686,7 +466,7 @@ const FreeAssessment = () => {
                           setFormData({ ...formData, services: formData.services.filter((s) => s !== option) });
                         }
                       }}
-                      className="border-zinc-600 data-[state=checked]:bg-amber-500 data-[state=checked]:border-amber-500"
+                      className="border-zinc-600 data-[state=checked]:bg-[#a67a54] data-[state=checked]:border-[#a67a54]"
                     />
                     <span className="text-sm">{option}</span>
                   </label>
@@ -697,7 +477,8 @@ const FreeAssessment = () => {
               type="submit"
               disabled={loading}
               size="lg"
-              className="w-full bg-amber-500 hover:bg-amber-600 text-zinc-900 font-semibold"
+              className="w-full text-white font-semibold hover:opacity-95"
+              style={{ backgroundColor: "#a67a54" }}
             >
               {loading ? "Sending…" : "Submit Request"}
               <Send className="ml-2 h-5 w-5" />
@@ -709,4 +490,4 @@ const FreeAssessment = () => {
   );
 };
 
-export default FreeAssessment;
+export default LandingPropertyValue;

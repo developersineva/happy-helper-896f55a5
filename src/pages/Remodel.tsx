@@ -127,7 +127,7 @@ const Remodel = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="landing-page min-h-screen bg-background text-foreground">
       {/* ── HERO ── */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div
@@ -155,7 +155,7 @@ const Remodel = () => {
             initial="hidden"
             animate="visible"
             custom={1}
-            className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-4"
+            className="font-display font-bold text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-4"
           >
             Remodel Your Home Today.
             <br />

@@ -11,8 +11,12 @@ import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import Remodel from "./pages/Remodel";
 import FreeAssessment from "./pages/FreeAssessment";
+import RenovateNow from "./pages/RenovateNow";
 import ThankYou from "./pages/ThankYou";
 import NotFound from "./pages/NotFound";
+import LandingAirbnb from "./pages/landing/LandingAirbnb";
+import LandingPropertyValue from "./pages/landing/LandingPropertyValue";
+import LandingInvestorFlip from "./pages/landing/LandingInvestorFlip";
 
 const queryClient = new QueryClient();
 
@@ -31,7 +35,11 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/landing" element={<Remodel />} />
           <Route path="/free-assessment" element={<FreeAssessment />} />
+          <Route path="/renovate-now" element={<RenovateNow />} />
           <Route path="/thank-you" element={<ThankYou />} />
+          <Route path="/airbnb" element={<LandingAirbnb />} />
+          <Route path="/property-value" element={<LandingPropertyValue />} />
+          <Route path="/investor-flip" element={<LandingInvestorFlip />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

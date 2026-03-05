@@ -247,3 +247,11 @@
 .delay-300 { animation-delay: 300ms; }
 .delay-400 { animation-delay: 400ms; }
 .delay-500 { animation-delay: 500ms; }
+
+/* Landing pages: mobile h2 subtitle */
+@media (max-width: 639px) {
+  .landing-page h2 {
+    font-size: 2rem !important;
+    line-height: 2.5rem !important;
+  }
+}
