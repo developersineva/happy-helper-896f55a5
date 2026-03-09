@@ -2,13 +2,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import { useToast } from "@/hooks/use-toast";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { supabase } from "@/integrations/supabase/client";
@@ -22,6 +15,7 @@ const serviceOptions = [
   "Interior Redesign",
   "Other Services",
 ];
+const BOOKING_CTA_URL = "https://api.hiighvance.com/widget/bookings/book-your-consultation/landing";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -58,7 +52,6 @@ const ThankYou = () => {
     services: [] as string[],
   });
   const [loading, setLoading] = useState(false);
-  const [formPopupOpen, setFormPopupOpen] = useState(false);
   const { toast } = useToast();
 
   useDocumentTitle({
@@ -89,7 +82,6 @@ const ThankYou = () => {
       if (error) throw error;
       toast({ title: "Request sent!", description: "We'll get back to you within 24 hours." });
       setFormData({ name: "", email: "", phone: "", services: [] });
-      setFormPopupOpen(false);
     } catch {
       toast({ title: "Error", description: "Failed to submit. Please try again.", variant: "destructive" });
     } finally {
@@ -97,7 +89,9 @@ const ThankYou = () => {
     }
   };
 
-  const openFormPopup = () => setFormPopupOpen(true);
+  const openFormPopup = () => {
+    window.open(BOOKING_CTA_URL, "_blank", "noopener,noreferrer");
+  };
 
   return (
     <div className="min-h-screen bg-zinc-950 text-white">
@@ -258,82 +252,6 @@ const ThankYou = () => {
         </div>
       </footer>
 
-      {/* Form popup — same as landing pages */}
-      <Dialog open={formPopupOpen} onOpenChange={setFormPopupOpen}>
-        <DialogContent className="sm:max-w-md bg-zinc-950 border-zinc-700 text-white max-h-[90vh] overflow-y-auto mx-3 sm:mx-4 my-4 sm:my-0">
-          <DialogHeader>
-            <DialogTitle className="text-white text-xl sm:text-2xl font-bold">Book Your Consultation</DialogTitle>
-            <DialogDescription className="text-zinc-400">
-              We&apos;ll reach out to discuss your property and goals.
-            </DialogDescription>
-          </DialogHeader>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-zinc-200 mb-1.5">Name *</label>
-              <Input
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                placeholder="Your name"
-                required
-                className="bg-zinc-800 border-zinc-600 text-white placeholder:text-zinc-500"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-zinc-200 mb-1.5">Email *</label>
-              <Input
-                type="email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                placeholder="your@email.com"
-                required
-                className="bg-zinc-800 border-zinc-600 text-white placeholder:text-zinc-500"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-zinc-200 mb-1.5">Phone *</label>
-              <Input
-                type="tel"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                placeholder="(555) 123-4567"
-                required
-                className="bg-zinc-800 border-zinc-600 text-white placeholder:text-zinc-500"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-zinc-200 mb-1.5">Which services are you interested in? *</label>
-              <div className="mt-2 space-y-2">
-                {serviceOptions.map((option) => (
-                  <label key={option} className="flex items-center gap-2 cursor-pointer text-zinc-300">
-                    <Checkbox
-                      checked={formData.services.includes(option)}
-                      onCheckedChange={(checked) => {
-                        if (checked) {
-                          setFormData({ ...formData, services: [...formData.services, option] });
-                        } else {
-                          setFormData({ ...formData, services: formData.services.filter((s) => s !== option) });
-                        }
-                      }}
-                      className="border-zinc-600 data-[state=checked]:bg-[#a67a54] data-[state=checked]:border-[#a67a54]"
-                    />
-                    <span className="text-sm">{option}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
-            <Button
-              type="submit"
-              disabled={loading}
-              size="lg"
-              className="w-full text-white font-semibold hover:opacity-95"
-              style={{ backgroundColor: "#a67a54" }}
-            >
-              {loading ? "Sending…" : "Submit Request"}
-              <Send className="ml-2 h-5 w-5" />
-            </Button>
-          </form>
-        </DialogContent>
-      </Dialog>
     </div>
   );
 };

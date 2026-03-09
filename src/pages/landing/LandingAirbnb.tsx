@@ -6,13 +6,6 @@ import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import { useToast } from "@/hooks/use-toast";
 import futureLandLogo from "@/assets/Future_Land_Logo.svg";
 import { supabase } from "@/integrations/supabase/client";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Check, ArrowRight, Send } from "lucide-react";
@@ -33,6 +26,7 @@ const serviceOptions = [
   "Airbnb / Vacation Rental",
   "Other Services",
 ];
+const BOOKING_CTA_URL = "https://api.hiighvance.com/widget/bookings/book-your-consultation/landing";
 
 const LandingAirbnb = () => {
   const navigate = useNavigate();
@@ -43,7 +37,6 @@ const LandingAirbnb = () => {
     services: [] as string[],
   });
   const [loading, setLoading] = useState(false);
-  const [formPopupOpen, setFormPopupOpen] = useState(false);
   const { toast } = useToast();
 
   useDocumentTitle({
@@ -75,7 +68,6 @@ const LandingAirbnb = () => {
       if (error) throw error;
       toast({ title: "Request sent!", description: "We'll get back to you within 24 hours." });
       setFormData({ name: "", email: "", phone: "", services: [] });
-      setFormPopupOpen(false);
       setTimeout(() => navigate("/thank-you"), 2000);
     } catch {
       toast({ title: "Error", description: "Failed to submit. Please try again.", variant: "destructive" });
@@ -84,7 +76,9 @@ const LandingAirbnb = () => {
     }
   };
 
-  const openFormPopup = () => setFormPopupOpen(true);
+  const openFormPopup = () => {
+    window.open(BOOKING_CTA_URL, "_blank", "noopener,noreferrer");
+  };
 
   return (
     <div className="landing-page min-h-screen bg-[#f1f5f9] text-[#1a1a1a]">
@@ -319,76 +313,6 @@ const LandingAirbnb = () => {
         </div>
       </footer>
 
-      {/* FORM POPUP */}
-      <Dialog open={formPopupOpen} onOpenChange={setFormPopupOpen}>
-        <DialogContent className="sm:max-w-md bg-white border-gray-200 text-[#1a1a1a] max-h-[90vh] overflow-y-auto mx-3 sm:mx-4 my-4 sm:my-0">
-          <DialogHeader>
-            <DialogTitle className="text-[#1a1a1a] text-xl sm:text-2xl font-bold">Book Your Consultation</DialogTitle>
-            <DialogDescription className="text-[#6b7280]">
-              Request your free Airbnb upgrade assessment. We'll reach out to discuss your property and goals.
-            </DialogDescription>
-          </DialogHeader>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-[#374151] mb-1.5">Name *</label>
-              <Input
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                placeholder="Your name"
-                required
-                className="bg-white border-gray-300 text-[#1a1a1a] placeholder:text-gray-400"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-[#374151] mb-1.5">Email *</label>
-              <Input
-                type="email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                placeholder="your@email.com"
-                required
-                className="bg-white border-gray-300 text-[#1a1a1a] placeholder:text-gray-400"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-[#374151] mb-1.5">Phone *</label>
-              <Input
-                type="tel"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                placeholder="(555) 123-4567"
-                required
-                className="bg-white border-gray-300 text-[#1a1a1a] placeholder:text-gray-400"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-[#374151] mb-1.5">Which services are you interested in? *</label>
-              <div className="mt-2 space-y-2">
-                {serviceOptions.map((option) => (
-                  <label key={option} className="flex items-center gap-2 cursor-pointer text-[#374151]">
-                    <Checkbox
-                      checked={formData.services.includes(option)}
-                      onCheckedChange={(checked) => {
-                        if (checked) {
-                          setFormData({ ...formData, services: [...formData.services, option] });
-                        } else {
-                          setFormData({ ...formData, services: formData.services.filter((s) => s !== option) });
-                        }
-                      }}
-                      className="border-gray-400 data-[state=checked]:bg-[#2d5a3d] data-[state=checked]:border-[#2d5a3d]"
-                    />
-                    <span className="text-sm">{option}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
-            <Button type="submit" disabled={loading} size="lg" className="w-full bg-[#2d5a3d] hover:bg-[#234a32] text-white font-semibold rounded-lg">
-              {loading ? "Sending…" : "Submit Request"}
-              <Send className="ml-2 h-5 w-5" />
-            </Button>
-          </form>
-        </DialogContent>
-      </Dialog>
     </div>
   );
 };

@@ -6,13 +6,6 @@ import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import { useToast } from "@/hooks/use-toast";
 import futureLandLogo from "@/assets/Future_Land_Logo.svg";
 import { supabase } from "@/integrations/supabase/client";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Check, ArrowRight, Send } from "lucide-react";
@@ -33,6 +26,7 @@ const serviceOptions = [
   "Impact Windows",
   "Other Services",
 ];
+const BOOKING_CTA_URL = "https://api.hiighvance.com/widget/bookings/book-your-consultation/landing";
 
 const RenovateNow = () => {
   const navigate = useNavigate();
@@ -43,7 +37,6 @@ const RenovateNow = () => {
     services: [] as string[],
   });
   const [loading, setLoading] = useState(false);
-  const [formPopupOpen, setFormPopupOpen] = useState(false);
   const { toast } = useToast();
 
   useDocumentTitle({
@@ -75,7 +68,6 @@ const RenovateNow = () => {
       if (error) throw error;
       toast({ title: "Request sent!", description: "We'll get back to you within 24 hours." });
       setFormData({ name: "", email: "", phone: "", services: [] });
-      setFormPopupOpen(false);
       setTimeout(() => navigate("/thank-you"), 2000);
     } catch {
       toast({ title: "Error", description: "Failed to submit. Please try again.", variant: "destructive" });
@@ -84,7 +76,9 @@ const RenovateNow = () => {
     }
   };
 
-  const openFormPopup = () => setFormPopupOpen(true);
+  const openFormPopup = () => {
+    window.open(BOOKING_CTA_URL, "_blank", "noopener,noreferrer");
+  };
 
   return (
     <div className="landing-page min-h-screen bg-[#f8f9fa] text-[#1a1a1a]">
@@ -393,81 +387,6 @@ const RenovateNow = () => {
         </div>
       </section>
 
-      {/* FORM — LP style: white card, border */}
-      <section id="qualify-form" className="py-12 sm:py-16 md:py-24 bg-[#f8f9fa] scroll-mt-20 border-b border-gray-200">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-xl mx-auto">
-            <div className="bg-white rounded-xl border-2 border-gray-200 shadow-sm p-6 sm:p-8 md:p-10">
-              <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-[#1a1a1a] mb-2 text-center">
-                Check If Your Project Qualifies
-              </h2>
-              <p className="text-[#6b7280] text-xs sm:text-sm text-center mb-4 sm:mb-6">
-                Fill in your details and our team will reach out to see if your renovation project qualifies for our pay-after-90-days program.
-              </p>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-[#374151] mb-1.5">Name *</label>
-                  <Input
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="Your name"
-                    required
-                    className="bg-white border-gray-300 text-[#1a1a1a] placeholder:text-gray-400"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-[#374151] mb-1.5">Email *</label>
-                  <Input
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="your@email.com"
-                    required
-                    className="bg-white border-gray-300 text-[#1a1a1a] placeholder:text-gray-400"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-[#374151] mb-1.5">Phone *</label>
-                  <Input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="(555) 123-4567"
-                    required
-                    className="bg-white border-gray-300 text-[#1a1a1a] placeholder:text-gray-400"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-[#374151] mb-1.5">Which services are you interested in? *</label>
-                  <div className="space-y-2 mt-2">
-                    {serviceOptions.map((option) => (
-                      <label key={option} className="flex items-center gap-2 cursor-pointer text-[#374151]">
-                        <Checkbox
-                          checked={formData.services.includes(option)}
-                          onCheckedChange={(checked) => {
-                            if (checked) {
-                              setFormData({ ...formData, services: [...formData.services, option] });
-                            } else {
-                              setFormData({ ...formData, services: formData.services.filter((s) => s !== option) });
-                            }
-                          }}
-                          className="border-gray-400 data-[state=checked]:bg-[#ea580c] data-[state=checked]:border-[#ea580c]"
-                        />
-                        <span className="text-sm">{option}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-                <Button type="submit" disabled={loading} size="lg" className="w-full bg-[#ea580c] hover:bg-[#c2410c] text-white font-semibold rounded-lg">
-                  {loading ? "Sending…" : "Submit Request"}
-                  <Send className="ml-2 h-5 w-5" />
-                </Button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* FOOTER — dark bg #09090b, white text */}
       <footer className="bg-[#09090b] border-t border-zinc-800 py-6">
         <div className="container mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 max-w-[1200px]">
@@ -481,76 +400,6 @@ const RenovateNow = () => {
         </div>
       </footer>
 
-      {/* FORM POPUP — LP style light */}
-      <Dialog open={formPopupOpen} onOpenChange={setFormPopupOpen}>
-        <DialogContent className="sm:max-w-md bg-white border-gray-200 text-[#1a1a1a] max-h-[90vh] overflow-y-auto mx-3 sm:mx-4 my-4 sm:my-0">
-          <DialogHeader>
-            <DialogTitle className="text-[#1a1a1a]">Book Your Consultation</DialogTitle>
-            <DialogDescription className="text-[#6b7280]">
-              Fill in your details and our team will reach out to see if your project qualifies.
-            </DialogDescription>
-          </DialogHeader>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-[#374151] mb-1.5">Name *</label>
-              <Input
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                placeholder="Your name"
-                required
-                className="bg-white border-gray-300 text-[#1a1a1a] placeholder:text-gray-400"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-[#374151] mb-1.5">Email *</label>
-              <Input
-                type="email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                placeholder="your@email.com"
-                required
-                className="bg-white border-gray-300 text-[#1a1a1a] placeholder:text-gray-400"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-[#374151] mb-1.5">Phone *</label>
-              <Input
-                type="tel"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                placeholder="(555) 123-4567"
-                required
-                className="bg-white border-gray-300 text-[#1a1a1a] placeholder:text-gray-400"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-[#374151] mb-1.5">Which services are you interested in? *</label>
-              <div className="mt-2 space-y-2">
-                {serviceOptions.map((option) => (
-                  <label key={option} className="flex items-center gap-2 cursor-pointer text-[#374151]">
-                    <Checkbox
-                      checked={formData.services.includes(option)}
-                      onCheckedChange={(checked) => {
-                        if (checked) {
-                          setFormData({ ...formData, services: [...formData.services, option] });
-                        } else {
-                          setFormData({ ...formData, services: formData.services.filter((s) => s !== option) });
-                        }
-                      }}
-                      className="border-gray-400 data-[state=checked]:bg-[#ea580c] data-[state=checked]:border-[#ea580c]"
-                    />
-                    <span className="text-sm">{option}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
-            <Button type="submit" disabled={loading} size="lg" className="w-full bg-[#ea580c] hover:bg-[#c2410c] text-white font-semibold rounded-lg">
-              {loading ? "Sending…" : "Submit Request"}
-              <Send className="ml-2 h-5 w-5" />
-            </Button>
-          </form>
-        </DialogContent>
-      </Dialog>
     </div>
   );
 };
